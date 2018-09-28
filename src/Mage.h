@@ -8,12 +8,17 @@
 #ifndef MAGE_H_
 #define MAGE_H_
 
+#include "Character.h"
+
 namespace std {
 
-class Mage {
+class Mage : public Character {
 public:
 	Mage();
 	virtual ~Mage();
+	// methods
+	bool isDead();
+	void useWeapon(Character&);
 };
 
 } /* namespace std */

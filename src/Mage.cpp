@@ -10,12 +10,20 @@
 namespace std {
 
 Mage::Mage() {
-	// TODO Auto-generated constructor stub
-
+	this->hitPoints = 12;
 }
 
 Mage::~Mage() {
 	// TODO Auto-generated destructor stub
+}
+
+bool Mage::isDead() {
+	if (hitPoints<=0) return true;
+	else return false;
+}
+
+void Mage::useWeapon(Character& character) {
+
 }
 
 } /* namespace std */
