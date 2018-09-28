@@ -18,8 +18,7 @@ Priestess::~Priestess() {
 }
 
 bool Priestess::isDead() {
-	if (hitPoints<=0) return true;
-	else return false;
+	return this->hitPoints==0;
 }
 
 void Priestess::useWeapon(Character& character) {

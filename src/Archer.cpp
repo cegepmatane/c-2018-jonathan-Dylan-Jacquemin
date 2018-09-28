@@ -19,8 +19,7 @@ Archer::~Archer() {
 }
 
 bool Archer::isDead() {
-	if (hitPoints<=0) return true;
-	else return false;
+	return this->hitPoints==0;
 }
 
 void Archer::useWeapon(Character& character) {

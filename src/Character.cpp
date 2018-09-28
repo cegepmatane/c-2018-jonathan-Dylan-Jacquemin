@@ -18,9 +18,7 @@ Character::~Character() {
 }
 
 bool Character::isDead() {
-	if (this->hitPoints <= 0) {
-		return true;
-	}
+	return this->hitPoints==0;
 }
 
 void Character::useWeapon(Character& character) {

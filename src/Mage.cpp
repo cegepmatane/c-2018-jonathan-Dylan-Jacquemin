@@ -18,8 +18,7 @@ Mage::~Mage() {
 }
 
 bool Mage::isDead() {
-	if (hitPoints<=0) return true;
-	else return false;
+	return this->hitPoints==0;
 }
 
 void Mage::useWeapon(Character& character) {
