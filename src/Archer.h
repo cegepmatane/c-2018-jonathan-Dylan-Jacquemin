@@ -8,12 +8,17 @@
 #ifndef ARCHER_H_
 #define ARCHER_H_
 
+#include "Character.h"
+
 namespace std {
 
-class Archer {
+class Archer : public Character {
 public:
 	Archer();
 	virtual ~Archer();
+	// methods
+	bool isDead();
+	void useWeapon(Character&);
 };
 
 } /* namespace std */

@@ -18,7 +18,7 @@ public:
 	int hitPoints;
 	// methods
 	virtual bool isDead();
-	virtual void useWeapon();
+	virtual void useWeapon(Character&);
 };
 
 } /* namespace std */
