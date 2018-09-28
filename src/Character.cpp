@@ -10,12 +10,21 @@
 namespace std {
 
 Character::Character() {
-	// TODO Auto-generated constructor stub
-
+	this->hitPoints = 0;
 }
 
 Character::~Character() {
 	// TODO Auto-generated destructor stub
+}
+
+bool Character::isDead() {
+	if (this->hitPoints <= 0) {
+		return true;
+	}
+}
+
+void Character::useWeapon() {
+
 }
 
 } /* namespace std */

@@ -14,6 +14,11 @@ class Character {
 public:
 	Character();
 	virtual ~Character();
+	// attributes
+	int hitPoints;
+	// methods
+	virtual bool isDead();
+	virtual void useWeapon();
 };
 
 } /* namespace std */
