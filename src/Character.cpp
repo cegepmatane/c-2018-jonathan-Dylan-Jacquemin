@@ -23,7 +23,7 @@ bool Character::isDead() {
 	}
 }
 
-void Character::useWeapon() {
+void Character::useWeapon(Character& character) {
 
 }
 

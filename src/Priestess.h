@@ -8,12 +8,17 @@
 #ifndef PRIESTESS_H_
 #define PRIESTESS_H_
 
+#include "Character.h"
+
 namespace std {
 
-class Priestess {
+class Priestess : public Character {
 public:
 	Priestess();
 	virtual ~Priestess();
+	// methods
+	bool isDead();
+	void useWeapon(Character&);
 };
 
 } /* namespace std */

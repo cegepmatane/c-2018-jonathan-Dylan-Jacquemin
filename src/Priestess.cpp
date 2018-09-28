@@ -10,12 +10,19 @@
 namespace std {
 
 Priestess::Priestess() {
-	// TODO Auto-generated constructor stub
-
+	this->hitPoints = 20;
 }
 
 Priestess::~Priestess() {
 	// TODO Auto-generated destructor stub
+}
+
+bool Priestess::isDead() {
+	if (hitPoints<=0) return true;
+	else return false;
+}
+
+void Priestess::useWeapon(Character& character) {
 }
 
 } /* namespace std */
