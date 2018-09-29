@@ -11,7 +11,11 @@ namespace std {
 
 Archer::Archer() {
 	this->hitPoints = 16;
+}
 
+Archer::Archer(Weapon& weapon) {
+	this->hitPoints = 16;
+	this->weapon = weapon;
 }
 
 Archer::~Archer() {
@@ -23,7 +27,7 @@ bool Archer::isDead() {
 }
 
 void Archer::useWeapon(Character& character) {
-
+	character.hitPoints = character.hitPoints - this->weapon.damageAmmount;
 }
 
 } /* namespace std */

@@ -9,12 +9,14 @@
 #define PRIESTESS_H_
 
 #include "Character.h"
+#include "Weapon.h"
 
 namespace std {
 
 class Priestess : public Character {
 public:
 	Priestess();
+	Priestess(Weapon& weapon);
 	virtual ~Priestess();
 	// methods
 	bool isDead();

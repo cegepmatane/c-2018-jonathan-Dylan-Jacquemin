@@ -13,6 +13,11 @@ Mage::Mage() {
 	this->hitPoints = 12;
 }
 
+Mage::Mage(Weapon& weapon) {
+	this->hitPoints = 12;
+	this->weapon = weapon;
+}
+
 Mage::~Mage() {
 	// TODO Auto-generated destructor stub
 }
@@ -22,7 +27,7 @@ bool Mage::isDead() {
 }
 
 void Mage::useWeapon(Character& character) {
-
+	character.hitPoints = character.hitPoints - this->weapon.damageAmmount;
 }
 
 } /* namespace std */

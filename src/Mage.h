@@ -9,12 +9,14 @@
 #define MAGE_H_
 
 #include "Character.h"
+#include "Weapon.h"
 
 namespace std {
 
 class Mage : public Character {
 public:
 	Mage();
+	Mage(Weapon&);
 	virtual ~Mage();
 	// methods
 	bool isDead();

@@ -13,6 +13,11 @@ Character::Character() {
 	this->hitPoints = 0;
 }
 
+Character::Character(Weapon& weapon) {
+	this->hitPoints = 0;
+	this->weapon = weapon;
+}
+
 Character::~Character() {
 	// TODO Auto-generated destructor stub
 }
@@ -22,7 +27,7 @@ bool Character::isDead() {
 }
 
 void Character::useWeapon(Character& character) {
-
+	character.hitPoints = character.hitPoints - this->weapon.damageAmmount;
 }
 
 } /* namespace std */

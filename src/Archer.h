@@ -9,12 +9,14 @@
 #define ARCHER_H_
 
 #include "Character.h"
+#include "Weapon.h"
 
 namespace std {
 
 class Archer : public Character {
 public:
 	Archer();
+	Archer(Weapon&);
 	virtual ~Archer();
 	// methods
 	bool isDead();

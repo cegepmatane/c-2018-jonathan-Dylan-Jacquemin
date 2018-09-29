@@ -13,6 +13,11 @@ Priestess::Priestess() {
 	this->hitPoints = 20;
 }
 
+Priestess::Priestess(Weapon& weapon) {
+	this->hitPoints = 20;
+	this->weapon = weapon;
+}
+
 Priestess::~Priestess() {
 	// TODO Auto-generated destructor stub
 }
@@ -22,6 +27,7 @@ bool Priestess::isDead() {
 }
 
 void Priestess::useWeapon(Character& character) {
+	character.hitPoints = character.hitPoints - this->weapon.damageAmmount;
 }
 
 } /* namespace std */
