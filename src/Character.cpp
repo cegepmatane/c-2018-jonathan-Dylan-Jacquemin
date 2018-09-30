@@ -13,6 +13,10 @@ Character::Character() {
 	this->hitPoints = 0;
 }
 
+Character::Character(int hitPoints) {
+	this->hitPoints = hitPoints;
+}
+
 Character::Character(Weapon& weapon) {
 	this->hitPoints = 0;
 	this->weapon = weapon;

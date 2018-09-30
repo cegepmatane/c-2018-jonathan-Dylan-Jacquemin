@@ -16,6 +16,7 @@ namespace std {
 class Archer : public Character {
 public:
 	Archer();
+	Archer(int);
 	Archer(Weapon&);
 	virtual ~Archer();
 	// methods

@@ -16,6 +16,7 @@ namespace std {
 class Priestess : public Character {
 public:
 	Priestess();
+	Priestess(int);
 	Priestess(Weapon& weapon);
 	virtual ~Priestess();
 	// methods

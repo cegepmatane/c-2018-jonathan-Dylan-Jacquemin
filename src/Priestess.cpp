@@ -13,6 +13,10 @@ Priestess::Priestess() {
 	this->hitPoints = 20;
 }
 
+Priestess::Priestess(int hitPoints) {
+	this->hitPoints = hitPoints;
+}
+
 Priestess::Priestess(Weapon& weapon) {
 	this->hitPoints = 20;
 	this->weapon = weapon;

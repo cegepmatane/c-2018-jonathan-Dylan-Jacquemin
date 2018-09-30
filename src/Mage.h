@@ -16,6 +16,7 @@ namespace std {
 class Mage : public Character {
 public:
 	Mage();
+	Mage(int);
 	Mage(Weapon&);
 	virtual ~Mage();
 	// methods

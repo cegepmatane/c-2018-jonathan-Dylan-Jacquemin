@@ -13,6 +13,10 @@ Archer::Archer() {
 	this->hitPoints = 16;
 }
 
+Archer::Archer(int hitPoints) {
+	this->hitPoints = hitPoints;
+}
+
 Archer::Archer(Weapon& weapon) {
 	this->hitPoints = 16;
 	this->weapon = weapon;

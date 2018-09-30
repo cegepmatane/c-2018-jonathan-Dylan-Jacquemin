@@ -13,6 +13,10 @@ Mage::Mage() {
 	this->hitPoints = 12;
 }
 
+Mage::Mage(int hitPoints) {
+	this->hitPoints = hitPoints;
+}
+
 Mage::Mage(Weapon& weapon) {
 	this->hitPoints = 12;
 	this->weapon = weapon;
