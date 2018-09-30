@@ -16,6 +16,7 @@ namespace std {
 class Weapon {
 public:
 	Weapon();
+	Weapon(int);
 	virtual ~Weapon();
 	// attributes
 	int damageAmmount;

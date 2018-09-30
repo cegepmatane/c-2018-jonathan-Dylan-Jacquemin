@@ -15,6 +15,7 @@ namespace std {
 class Spell : public Weapon {
 public:
 	Spell();
+	Spell(int);
 	virtual ~Spell();
 	// methods
 	void giveWeaponSpecifications();

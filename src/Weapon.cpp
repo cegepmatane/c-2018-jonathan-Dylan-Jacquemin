@@ -9,20 +9,14 @@
 
 namespace std {
 
-Weapon::Weapon() {
-	this->damageAmmount = 0;
-}
+Weapon::Weapon() {}
 
-Weapon::~Weapon() {
+Weapon::Weapon(int damageAmmount) {}
 
-}
+Weapon::~Weapon() {}
 
-void Weapon::giveWeaponSpecifications() {
-	cout << "A weapon. No more. No less." << endl;
-}
+void Weapon::giveWeaponSpecifications() {}
 
-void Weapon::exportDatas() {
-
-}
+void Weapon::exportDatas() {}
 
 } /* namespace std */

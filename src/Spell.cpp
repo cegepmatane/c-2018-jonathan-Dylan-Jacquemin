@@ -13,6 +13,10 @@ Spell::Spell() {
 	this->damageAmmount = 4;
 }
 
+Spell::Spell(int damageAmmount) {
+	this->damageAmmount = damageAmmount;
+}
+
 Spell::~Spell() {
 
 }

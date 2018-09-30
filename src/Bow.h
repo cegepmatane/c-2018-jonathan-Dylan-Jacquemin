@@ -15,6 +15,7 @@ namespace std {
 class Bow : public Weapon{
 public:
 	Bow();
+	Bow(int);
 	virtual ~Bow();
 	// methods
 	void giveWeaponSpecifications();

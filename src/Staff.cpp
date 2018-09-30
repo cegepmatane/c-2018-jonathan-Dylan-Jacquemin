@@ -13,6 +13,10 @@ Staff::Staff() {
 	this->damageAmmount = -5;
 }
 
+Staff::Staff(int damageAmmount) {
+	this->damageAmmount = damageAmmount;
+}
+
 Staff::~Staff() {
 
 }

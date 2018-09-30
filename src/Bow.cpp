@@ -13,6 +13,10 @@ Bow::Bow() {
 	this->damageAmmount = 3;
 }
 
+Bow::Bow(int damageAmmount) {
+	this->damageAmmount = damageAmmount;
+}
+
 Bow::~Bow() {
 
 }

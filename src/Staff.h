@@ -15,6 +15,7 @@ namespace std {
 class Staff : public Weapon {
 public:
 	Staff();
+	Staff(int);
 	virtual ~Staff();
 	// methods
 	void giveWeaponSpecifications();

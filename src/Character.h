@@ -26,7 +26,9 @@ public:
 	int hitPoints;
 	Weapon weapon;
 	// methods
-	virtual bool isDead();
+	virtual bool isDead() {
+		return true;
+	};
 	virtual void useWeapon(Character&);
 	virtual void changeWeapon(Weapon&);
 	virtual void exportDatas();

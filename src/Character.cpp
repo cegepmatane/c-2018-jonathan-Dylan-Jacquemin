@@ -19,10 +19,6 @@ Character::Character(int, Weapon&){}
 
 Character::~Character() {}
 
-bool Character::isDead() {
-	return this->hitPoints==0;
-}
-
 void Character::useWeapon(Character& character) {}
 
 void Character::exportDatas() {}
