@@ -18,6 +18,7 @@ public:
 	virtual ~Staff();
 	// methods
 	void giveWeaponSpecifications();
+	void exportDatas();
 };
 
 } /* namespace std */

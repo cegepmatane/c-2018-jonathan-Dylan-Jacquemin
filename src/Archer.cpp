@@ -37,9 +37,10 @@ void Archer::exportDatas() {
 
 		file << className << ";" << this->hitPoints << ";" << endl;
 		file.close();
+		cout << "Archer datas succesfully exported" << endl;
 	}
 	else
-		cerr << "Error while oppening the file \"data.csv\"" << endl;
+		cerr << "Error while oppening the file \"archer.csv\"" << endl;
 }
 
 } /* namespace std */

@@ -10,7 +10,6 @@
 
 #include <iostream>
 #include <fstream>
-#include <typeinfo>
 
 #include "Weapon.h"
 

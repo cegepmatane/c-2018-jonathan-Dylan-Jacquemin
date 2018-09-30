@@ -18,6 +18,7 @@ public:
 	virtual ~Bow();
 	// methods
 	void giveWeaponSpecifications();
+	void exportDatas();
 };
 
 } /* namespace std */

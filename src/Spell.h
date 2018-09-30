@@ -18,6 +18,7 @@ public:
 	virtual ~Spell();
 	// methods
 	void giveWeaponSpecifications();
+	void exportDatas();
 };
 
 } /* namespace std */

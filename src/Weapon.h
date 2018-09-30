@@ -9,6 +9,7 @@
 #define WEAPON_H_
 
 #include <iostream>
+#include <fstream>
 
 namespace std {
 
@@ -20,6 +21,7 @@ public:
 	int damageAmmount;
 	// methods
 	virtual void giveWeaponSpecifications();
+	virtual void exportDatas();
 };
 
 } /* namespace std */

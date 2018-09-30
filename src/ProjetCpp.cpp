@@ -20,30 +20,39 @@
 using namespace std;
 
 int main() {
-	Weapon* staff = new Staff();
-	Weapon* spell = new Spell();
 	Weapon* bow = new Bow();
+	Weapon* spell = new Spell();
+	Weapon* staff = new Staff();
 
-	Character* priestess = new Priestess(*staff);
 	Character* archer = new Archer(*bow);
+	Character* mage = new Mage(*spell);
+	Character* priestess = new Priestess(*staff);
 
 	priestess->useWeapon(*archer);
-	cout << archer->hitPoints << endl;
-
-	Character* mage = new Mage(*spell);
+	cout << "Archer current HP : " << archer->hitPoints << endl;
 
 	mage->useWeapon(*archer);
 	mage->useWeapon(*archer);
 
-	cout << archer->hitPoints << endl;
+	cout << "Archer current HP : " << archer->hitPoints << endl;
 
 	archer->exportDatas();
-	mage->exportDatas();
-	priestess->exportDatas();
-
-	delete priestess;
 	delete archer;
+
+	mage->exportDatas();
 	delete mage;
+
+	priestess->exportDatas();
+	delete priestess;
+
+	bow->exportDatas();
+	delete bow;
+
+	spell->exportDatas();
+	delete spell;
+
+	staff->exportDatas();
+	delete staff;
 
 	return 0;
 }

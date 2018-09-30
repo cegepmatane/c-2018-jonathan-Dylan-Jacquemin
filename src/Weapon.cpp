@@ -21,4 +21,8 @@ void Weapon::giveWeaponSpecifications() {
 	cout << "A weapon. No more. No less." << endl;
 }
 
+void Weapon::exportDatas() {
+
+}
+
 } /* namespace std */
