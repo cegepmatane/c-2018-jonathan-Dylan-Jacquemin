@@ -30,4 +30,16 @@ void Priestess::useWeapon(Character& character) {
 	character.hitPoints = character.hitPoints - this->weapon.damageAmmount;
 }
 
+void Priestess::exportDatas() {
+	ofstream file("data/priestess.csv", ios::out | ios::trunc);
+	if(file) {
+		string className = "Priestess";
+
+		file << className << ";" << this->hitPoints << ";" << endl;
+		file.close();
+	}
+	else
+		cerr << "Error while oppening the file \"data.csv\"" << endl;
+}
+
 } /* namespace std */

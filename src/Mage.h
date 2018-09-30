@@ -21,6 +21,7 @@ public:
 	// methods
 	bool isDead();
 	void useWeapon(Character&);
+	void exportDatas();
 };
 
 } /* namespace std */

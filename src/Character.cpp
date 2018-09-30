@@ -30,4 +30,7 @@ void Character::useWeapon(Character& character) {
 	character.hitPoints = character.hitPoints - this->weapon.damageAmmount;
 }
 
+void Character::exportDatas() {
+}
+
 } /* namespace std */

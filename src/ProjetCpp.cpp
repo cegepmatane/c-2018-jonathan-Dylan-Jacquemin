@@ -37,6 +37,10 @@ int main() {
 
 	cout << archer->hitPoints << endl;
 
+	archer->exportDatas();
+	mage->exportDatas();
+	priestess->exportDatas();
+
 	delete priestess;
 	delete archer;
 	delete mage;

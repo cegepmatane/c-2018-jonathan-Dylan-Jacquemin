@@ -8,6 +8,10 @@
 #ifndef CHARACTER_H_
 #define CHARACTER_H_
 
+#include <iostream>
+#include <fstream>
+#include <typeinfo>
+
 #include "Weapon.h"
 
 namespace std {
@@ -23,6 +27,7 @@ public:
 	// methods
 	virtual bool isDead();
 	virtual void useWeapon(Character&);
+	virtual void exportDatas();
 };
 
 } /* namespace std */

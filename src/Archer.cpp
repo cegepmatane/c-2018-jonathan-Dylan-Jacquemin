@@ -30,4 +30,16 @@ void Archer::useWeapon(Character& character) {
 	character.hitPoints = character.hitPoints - this->weapon.damageAmmount;
 }
 
+void Archer::exportDatas() {
+	ofstream file("data/archer.csv", ios::out | ios::trunc);
+	if(file) {
+		string className = "Archer";
+
+		file << className << ";" << this->hitPoints << ";" << endl;
+		file.close();
+	}
+	else
+		cerr << "Error while oppening the file \"data.csv\"" << endl;
+}
+
 } /* namespace std */

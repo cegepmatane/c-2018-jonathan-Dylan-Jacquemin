@@ -30,4 +30,16 @@ void Mage::useWeapon(Character& character) {
 	character.hitPoints = character.hitPoints - this->weapon.damageAmmount;
 }
 
+void Mage::exportDatas() {
+	ofstream file("data/mage.csv", ios::out | ios::trunc);
+	if(file) {
+		string className = "Mage";
+
+		file << className << ";" << this->hitPoints << ";" << endl;
+		file.close();
+	}
+	else
+		cerr << "Error while oppening the file \"data.csv\"" << endl;
+}
+
 } /* namespace std */
