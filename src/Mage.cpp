@@ -18,7 +18,12 @@ Mage::Mage(int hitPoints) {
 }
 
 Mage::Mage(Weapon& weapon) {
-	this->hitPoints = 12;
+	Mage();
+	this->weapon = weapon;
+}
+
+Mage::Mage(int hitPoints, Weapon& weapon) {
+	this->hitPoints = hitPoints;
 	this->weapon = weapon;
 }
 
@@ -32,6 +37,10 @@ bool Mage::isDead() {
 
 void Mage::useWeapon(Character& character) {
 	character.hitPoints = character.hitPoints - this->weapon.damageAmmount;
+}
+
+void Mage::changeWeapon(Weapon& weapon) {
+	this->weapon = weapon;
 }
 
 void Mage::exportDatas() {

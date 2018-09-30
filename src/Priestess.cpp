@@ -18,7 +18,12 @@ Priestess::Priestess(int hitPoints) {
 }
 
 Priestess::Priestess(Weapon& weapon) {
-	this->hitPoints = 20;
+	Priestess();
+	this->weapon = weapon;
+}
+
+Priestess::Priestess(int hitPoints, Weapon& weapon) {
+	this->hitPoints = hitPoints;
 	this->weapon = weapon;
 }
 
@@ -32,6 +37,10 @@ bool Priestess::isDead() {
 
 void Priestess::useWeapon(Character& character) {
 	character.hitPoints = character.hitPoints - this->weapon.damageAmmount;
+}
+
+void Priestess::changeWeapon(Weapon& weapon) {
+	this->weapon = weapon;
 }
 
 void Priestess::exportDatas() {

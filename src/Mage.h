@@ -18,10 +18,12 @@ public:
 	Mage();
 	Mage(int);
 	Mage(Weapon&);
+	Mage(int, Weapon&);
 	virtual ~Mage();
 	// methods
 	bool isDead();
 	void useWeapon(Character&);
+	void changeWeapon(Weapon&);
 	void exportDatas();
 };
 

@@ -20,6 +20,7 @@ public:
 	Character();
 	Character(int);
 	Character(Weapon&);
+	Character(int, Weapon&);
 	virtual ~Character();
 	// attributes
 	int hitPoints;
@@ -27,6 +28,7 @@ public:
 	// methods
 	virtual bool isDead();
 	virtual void useWeapon(Character&);
+	virtual void changeWeapon(Weapon&);
 	virtual void exportDatas();
 };
 

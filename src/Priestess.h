@@ -17,11 +17,13 @@ class Priestess : public Character {
 public:
 	Priestess();
 	Priestess(int);
-	Priestess(Weapon& weapon);
+	Priestess(Weapon&);
+	Priestess(int, Weapon&);
 	virtual ~Priestess();
 	// methods
 	bool isDead();
 	void useWeapon(Character&);
+	void changeWeapon(Weapon&);
 	void exportDatas();
 };
 

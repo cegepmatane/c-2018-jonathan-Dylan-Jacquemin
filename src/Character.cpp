@@ -9,32 +9,24 @@
 
 namespace std {
 
-Character::Character() {
-	this->hitPoints = 0;
-}
+Character::Character() {}
 
-Character::Character(int hitPoints) {
-	this->hitPoints = hitPoints;
-}
+Character::Character(int hitPoints) {}
 
-Character::Character(Weapon& weapon) {
-	this->hitPoints = 0;
-	this->weapon = weapon;
-}
+Character::Character(Weapon& weapon) {}
 
-Character::~Character() {
-	// TODO Auto-generated destructor stub
-}
+Character::Character(int, Weapon&){}
+
+Character::~Character() {}
 
 bool Character::isDead() {
 	return this->hitPoints==0;
 }
 
-void Character::useWeapon(Character& character) {
-	character.hitPoints = character.hitPoints - this->weapon.damageAmmount;
-}
+void Character::useWeapon(Character& character) {}
 
-void Character::exportDatas() {
-}
+void Character::exportDatas() {}
+
+void Character::changeWeapon(Weapon& weapon) {}
 
 } /* namespace std */

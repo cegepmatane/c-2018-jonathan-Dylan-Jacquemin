@@ -18,7 +18,12 @@ Archer::Archer(int hitPoints) {
 }
 
 Archer::Archer(Weapon& weapon) {
-	this->hitPoints = 16;
+	Archer();
+	this->weapon = weapon;
+}
+
+Archer::Archer(int hitPoints, Weapon& weapon) {
+	this->hitPoints = hitPoints;
 	this->weapon = weapon;
 }
 
@@ -34,6 +39,10 @@ void Archer::useWeapon(Character& character) {
 	character.hitPoints = character.hitPoints - this->weapon.damageAmmount;
 }
 
+void Archer::changeWeapon(Weapon& weapon) {
+	this->weapon = weapon;
+}
+
 void Archer::exportDatas() {
 	ofstream file("data/archer.csv", ios::out | ios::trunc);
 	if(file) {
@@ -46,5 +55,6 @@ void Archer::exportDatas() {
 	else
 		cerr << "Error while oppening the file \"archer.csv\"" << endl;
 }
+
 
 } /* namespace std */

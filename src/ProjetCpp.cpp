@@ -24,7 +24,7 @@ int main() {
 	Weapon* spell = new Spell();
 	Weapon* staff = new Staff();
 
-	Character* archer = new Archer(*bow);
+	Character* archer = new Archer(35, *bow);
 	Character* mage = new Mage(*spell);
 	Character* priestess = new Priestess(*staff);
 

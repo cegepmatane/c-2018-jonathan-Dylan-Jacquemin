@@ -18,10 +18,12 @@ public:
 	Archer();
 	Archer(int);
 	Archer(Weapon&);
+	Archer(int, Weapon&);
 	virtual ~Archer();
 	// methods
 	bool isDead();
 	void useWeapon(Character&);
+	void changeWeapon(Weapon&);
 	void exportDatas();
 };
 
