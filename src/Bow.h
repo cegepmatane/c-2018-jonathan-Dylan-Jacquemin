@@ -18,6 +18,7 @@ public:
 	Bow(int);
 	virtual ~Bow();
 	// methods
+	void initProp();
 	void giveWeaponSpecifications();
 	string exportDatas();
 };

@@ -22,6 +22,7 @@ public:
 	// attributes
 	int damageAmmount;
 	// methods
+	virtual void initProp();
 	virtual void giveWeaponSpecifications();
 	virtual string exportDatas();
 };

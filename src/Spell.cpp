@@ -10,15 +10,38 @@
 namespace std {
 
 Spell::Spell() {
-	this->damageAmmount = 4;
+	this->initProp();
 }
 
 Spell::Spell(int damageAmmount) {
+	this->initProp();
 	this->damageAmmount = damageAmmount;
 }
 
 Spell::~Spell() {
 
+}
+
+void Spell::initProp() {
+	ifstream spellSource;
+	spellSource.open("data/spell.csv");
+
+	string line;
+
+	while(!spellSource.eof()) {
+		getline(spellSource, line);
+
+		unsigned int startPosition = 0;
+		unsigned int endPosition = 0;
+
+		do {
+			endPosition = line.find(";", startPosition);
+			string value = line.substr(startPosition, endPosition - startPosition);
+			this->damageAmmount = stoi(value);
+			startPosition = endPosition + 1;
+		}
+		while((startPosition !=0) && (line.length() != startPosition));
+	}
 }
 
 void Spell::giveWeaponSpecifications() {

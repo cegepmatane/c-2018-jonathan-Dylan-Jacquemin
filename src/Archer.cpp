@@ -34,7 +34,7 @@ Archer::~Archer() {
 
 void Archer::initProp() {
 	ifstream archerSource;
-	archerSource.open("data/priestess.csv");
+	archerSource.open("data/archer.csv");
 
 	string line;
 

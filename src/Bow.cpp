@@ -10,15 +10,37 @@
 namespace std {
 
 Bow::Bow() {
-	this->damageAmmount = 3;
+	this->initProp();
 }
 
 Bow::Bow(int damageAmmount) {
-	this->damageAmmount = damageAmmount;
+	this->initProp();
 }
 
 Bow::~Bow() {
 
+}
+
+void Bow::initProp() {
+	ifstream bowSource;
+	bowSource.open("data/bow.csv");
+
+	string line;
+
+	while(!bowSource.eof()) {
+		getline(bowSource, line);
+
+		unsigned int startPosition = 0;
+		unsigned int endPosition = 0;
+
+		do {
+			endPosition = line.find(";", startPosition);
+			string value = line.substr(startPosition, endPosition - startPosition);
+			this->damageAmmount = stoi(value);
+			startPosition = endPosition + 1;
+		}
+		while((startPosition !=0) && (line.length() != startPosition));
+	}
 }
 
 void Bow::giveWeaponSpecifications() {

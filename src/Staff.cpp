@@ -10,15 +10,38 @@
 namespace std {
 
 Staff::Staff() {
-	this->damageAmmount = -5;
+	this->initProp();
 }
 
 Staff::Staff(int damageAmmount) {
+	this->initProp();
 	this->damageAmmount = damageAmmount;
 }
 
 Staff::~Staff() {
 
+}
+
+void Staff::initProp() {
+	ifstream staffSource;
+	staffSource.open("data/staff.csv");
+
+	string line;
+
+	while(!staffSource.eof()) {
+		getline(staffSource, line);
+
+		unsigned int startPosition = 0;
+		unsigned int endPosition = 0;
+
+		do {
+			endPosition = line.find(";", startPosition);
+			string value = line.substr(startPosition, endPosition - startPosition);
+			this->damageAmmount = stoi(value);
+			startPosition = endPosition + 1;
+		}
+		while((startPosition !=0) && (line.length() != startPosition));
+	}
 }
 
 void Staff::giveWeaponSpecifications() {

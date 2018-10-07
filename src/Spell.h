@@ -18,6 +18,7 @@ public:
 	Spell(int);
 	virtual ~Spell();
 	// methods
+	void initProp();
 	void giveWeaponSpecifications();
 	string exportDatas();
 };

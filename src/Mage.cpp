@@ -34,7 +34,7 @@ Mage::~Mage() {
 
 void Mage::initProp() {
 	ifstream mageSource;
-	mageSource.open("data/priestess.csv");
+	mageSource.open("data/mage.csv");
 
 	string line;
 

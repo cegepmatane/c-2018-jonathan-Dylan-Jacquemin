@@ -18,6 +18,7 @@ public:
 	Staff(int);
 	virtual ~Staff();
 	// methods
+	void initProp();
 	void giveWeaponSpecifications();
 	string exportDatas();
 };

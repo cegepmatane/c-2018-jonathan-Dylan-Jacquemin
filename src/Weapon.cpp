@@ -15,6 +15,8 @@ Weapon::Weapon(int damageAmmount) {}
 
 Weapon::~Weapon() {}
 
+void Weapon::initProp() {}
+
 void Weapon::giveWeaponSpecifications() {}
 
 string Weapon::exportDatas() {return "";}
