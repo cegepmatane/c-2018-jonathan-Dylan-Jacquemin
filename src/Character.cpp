@@ -19,10 +19,12 @@ Character::Character(int, Weapon&){}
 
 Character::~Character() {}
 
+void Character::initProp() {}
+
 void Character::useWeapon(Character& character) {}
 
-string Character::exportDatas() {return "";}
-
 void Character::changeWeapon(Weapon& weapon) {}
+
+string Character::exportDatas() {return "";}
 
 } /* namespace std */

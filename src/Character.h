@@ -27,6 +27,7 @@ public:
 	int hitPoints;
 	Weapon weapon;
 	// methods
+	virtual void initProp();
 	virtual bool isDead() {
 		return true;
 	};
