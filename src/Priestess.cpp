@@ -33,7 +33,19 @@ Priestess::~Priestess() {
 }
 
 void Priestess::initProp() {
-	ifstream priestessSource;
+	ifstream priestessSource("data/priestess.csv");
+
+	if (priestessSource.peek() == std::ifstream::traits_type::eof()) {
+		ofstream priestessFile("data/priestess.csv", ios::out | ios::trunc);
+		if(priestessFile) {
+			priestessFile << "20;";
+			priestessFile.close();
+		}
+		else
+			cerr << "Error while opening the file \"priestess.csv\"" << endl;
+	}
+
+	priestessSource.close();
 	priestessSource.open("data/priestess.csv");
 
 	string line;

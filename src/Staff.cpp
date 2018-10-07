@@ -23,7 +23,19 @@ Staff::~Staff() {
 }
 
 void Staff::initProp() {
-	ifstream staffSource;
+	ifstream staffSource("data/staff.csv");
+
+	if (staffSource.peek() == std::ifstream::traits_type::eof()) {
+		ofstream staffFile("data/staff.csv", ios::out | ios::trunc);
+		if(staffFile) {
+			staffFile << "-5;";
+			staffFile.close();
+		}
+		else
+			cerr << "Error while opening the file \"staff.csv\"" << endl;
+	}
+
+	staffSource.close();
 	staffSource.open("data/staff.csv");
 
 	string line;

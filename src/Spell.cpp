@@ -23,7 +23,19 @@ Spell::~Spell() {
 }
 
 void Spell::initProp() {
-	ifstream spellSource;
+	ifstream spellSource("data/spell.csv");
+
+	if (spellSource.peek() == std::ifstream::traits_type::eof()) {
+		ofstream spellFile("data/spell.csv", ios::out | ios::trunc);
+		if(spellFile) {
+			spellFile << "4;";
+			spellFile.close();
+		}
+		else
+			cerr << "Error while opening the file \"spell.csv\"" << endl;
+	}
+
+	spellSource.close();
 	spellSource.open("data/spell.csv");
 
 	string line;

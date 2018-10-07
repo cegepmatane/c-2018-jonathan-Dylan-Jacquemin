@@ -22,7 +22,19 @@ Bow::~Bow() {
 }
 
 void Bow::initProp() {
-	ifstream bowSource;
+	ifstream bowSource("data/bow.csv");
+
+	if (bowSource.peek() == std::ifstream::traits_type::eof()) {
+		ofstream bowFile("data/bow.csv", ios::out | ios::trunc);
+		if(bowFile) {
+			bowFile << "3;";
+			bowFile.close();
+		}
+		else
+			cerr << "Error while opening the file \"bow.csv\"" << endl;
+	}
+
+	bowSource.close();
 	bowSource.open("data/bow.csv");
 
 	string line;

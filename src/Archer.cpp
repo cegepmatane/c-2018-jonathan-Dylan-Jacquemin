@@ -33,7 +33,19 @@ Archer::~Archer() {
 }
 
 void Archer::initProp() {
-	ifstream archerSource;
+	ifstream archerSource("data/archer.csv");
+
+	if (archerSource.peek() == std::ifstream::traits_type::eof()) {
+		ofstream archerFile("data/archer.csv", ios::out | ios::trunc);
+		if(archerFile) {
+			archerFile << "16;";
+			archerFile.close();
+		}
+		else
+			cerr << "Error while opening the file \"archer.csv\"" << endl;
+	}
+
+	archerSource.close();
 	archerSource.open("data/archer.csv");
 
 	string line;

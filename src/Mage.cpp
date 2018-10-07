@@ -33,7 +33,19 @@ Mage::~Mage() {
 }
 
 void Mage::initProp() {
-	ifstream mageSource;
+	ifstream mageSource("data/mage.csv");
+
+	if (mageSource.peek() == std::ifstream::traits_type::eof()) {
+		ofstream mageFile("data/mage.csv", ios::out | ios::trunc);
+		if(mageFile) {
+			mageFile << "12;";
+			mageFile.close();
+		}
+		else
+			cerr << "Error while opening the file \"mage.csv\"" << endl;
+	}
+
+	mageSource.close();
 	mageSource.open("data/mage.csv");
 
 	string line;
