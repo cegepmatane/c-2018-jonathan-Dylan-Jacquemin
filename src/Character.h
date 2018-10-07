@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 #include "Weapon.h"
 
@@ -31,7 +32,7 @@ public:
 	};
 	virtual void useWeapon(Character&);
 	virtual void changeWeapon(Weapon&);
-	virtual void exportDatas();
+	virtual string exportDatas();
 };
 
 } /* namespace std */

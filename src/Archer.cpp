@@ -43,17 +43,10 @@ void Archer::changeWeapon(Weapon& weapon) {
 	this->weapon = weapon;
 }
 
-void Archer::exportDatas() {
-	ofstream file("data/archer.csv", ios::out | ios::trunc);
-	if(file) {
-		string className = "Archer";
-
-		file << className << ";" << this->hitPoints << ";" << endl;
-		file.close();
-		cout << "Archer datas succesfully exported" << endl;
-	}
-	else
-		cerr << "Error while oppening the file \"archer.csv\"" << endl;
+string Archer::exportDatas() {
+	stringstream xml;
+	xml << "<Archer><hitPoints>" << this->hitPoints << "</hitPoints>" << "</Archer>";
+	return xml.str();
 }
 
 

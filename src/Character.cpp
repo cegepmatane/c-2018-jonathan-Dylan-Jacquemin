@@ -21,7 +21,7 @@ Character::~Character() {}
 
 void Character::useWeapon(Character& character) {}
 
-void Character::exportDatas() {}
+string Character::exportDatas() {return "";}
 
 void Character::changeWeapon(Weapon& weapon) {}
 

@@ -43,17 +43,10 @@ void Priestess::changeWeapon(Weapon& weapon) {
 	this->weapon = weapon;
 }
 
-void Priestess::exportDatas() {
-	ofstream file("data/priestess.csv", ios::out | ios::trunc);
-	if(file) {
-		string className = "Priestess";
-
-		file << className << ";" << this->hitPoints << ";" << endl;
-		file.close();
-		cout << "Priestess datas succesfully exported" << endl;
-	}
-	else
-		cerr << "Error while oppening the file \"priestess.csv\"" << endl;
+string Priestess::exportDatas() {
+	stringstream xml;
+	xml << "<Priestess><hitPoints>" << this->hitPoints << "</hitPoints>" << "</Priestess>";
+	return xml.str();
 }
 
 } /* namespace std */

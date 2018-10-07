@@ -43,17 +43,10 @@ void Mage::changeWeapon(Weapon& weapon) {
 	this->weapon = weapon;
 }
 
-void Mage::exportDatas() {
-	ofstream file("data/mage.csv", ios::out | ios::trunc);
-	if(file) {
-		string className = "Mage";
-
-		file << className << ";" << this->hitPoints << ";" << endl;
-		file.close();
-		cout << "Mage datas succesfully exported" << endl;
-	}
-	else
-		cerr << "Error while oppening the file \"mage.csv\"" << endl;
+string Mage::exportDatas() {
+	stringstream xml;
+	xml << "<Mage><hitPoints>" << this->hitPoints << "</hitPoints>" << "</Mage>";
+	return xml.str();
 }
 
 } /* namespace std */
