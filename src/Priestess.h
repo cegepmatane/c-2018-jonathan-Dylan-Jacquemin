@@ -21,6 +21,7 @@ public:
 	Priestess(int, Weapon&);
 	virtual ~Priestess();
 	// methods
+	void initProp();
 	bool isDead();
 	void useWeapon(Character&);
 	void changeWeapon(Weapon&);

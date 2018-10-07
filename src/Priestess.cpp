@@ -10,15 +10,16 @@
 namespace std {
 
 Priestess::Priestess() {
-	this->hitPoints = 20;
+	this->initProp();
 }
 
 Priestess::Priestess(int hitPoints) {
+	this->initProp();
 	this->hitPoints = hitPoints;
 }
 
 Priestess::Priestess(Weapon& weapon) {
-	Priestess();
+	this->initProp();
 	this->weapon = weapon;
 }
 
@@ -29,6 +30,28 @@ Priestess::Priestess(int hitPoints, Weapon& weapon) {
 
 Priestess::~Priestess() {
 	// TODO Auto-generated destructor stub
+}
+
+void Priestess::initProp() {
+	ifstream priestessSource;
+	priestessSource.open("data/priestess.csv");
+
+	string line;
+
+	while(!priestessSource.eof()) {
+		getline(priestessSource, line);
+
+		unsigned int startPosition = 0;
+		unsigned int endPosition = 0;
+
+		do {
+			endPosition = line.find(";", startPosition);
+			string value = line.substr(startPosition, endPosition - startPosition);
+			this->hitPoints = stoi(value);
+			startPosition = endPosition + 1;
+		}
+		while((startPosition !=0) && (line.length() != startPosition));
+	}
 }
 
 bool Priestess::isDead() {

@@ -21,6 +21,7 @@ public:
 	Archer(int, Weapon&);
 	virtual ~Archer();
 	// methods
+	void initProp();
 	bool isDead();
 	void useWeapon(Character&);
 	void changeWeapon(Weapon&);

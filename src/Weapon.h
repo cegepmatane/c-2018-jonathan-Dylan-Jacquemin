@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 namespace std {
 
@@ -22,7 +23,7 @@ public:
 	int damageAmmount;
 	// methods
 	virtual void giveWeaponSpecifications();
-	virtual void exportDatas();
+	virtual string exportDatas();
 };
 
 } /* namespace std */

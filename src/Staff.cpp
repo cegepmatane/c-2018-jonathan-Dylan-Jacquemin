@@ -25,17 +25,10 @@ void Staff::giveWeaponSpecifications() {
 	cout << "A golden staff. Heals " << this->damageAmmount << " hit points." << endl;
 }
 
-void Staff::exportDatas() {
-	ofstream file("data/staff.csv", ios::out | ios::trunc);
-	if(file) {
-		string className = "Staff";
-
-		file << className << ";" << this->damageAmmount << ";" << endl;
-		file.close();
-		cout << "Staff datas succesfully exported" << endl;
-	}
-	else
-		cerr << "Error while oppening the file \"staff.csv\"" << endl;
+string Staff::exportDatas() {
+	stringstream xml;
+	xml << "<Staff><damageAmmount>" << this->damageAmmount << "</damageAmmount>" << "</Staff>";
+	return xml.str();
 }
 
 } /* namespace std */

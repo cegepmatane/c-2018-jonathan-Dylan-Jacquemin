@@ -17,6 +17,6 @@ Weapon::~Weapon() {}
 
 void Weapon::giveWeaponSpecifications() {}
 
-void Weapon::exportDatas() {}
+string Weapon::exportDatas() {return "";}
 
 } /* namespace std */

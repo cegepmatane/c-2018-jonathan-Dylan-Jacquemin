@@ -10,15 +10,16 @@
 namespace std {
 
 Mage::Mage() {
-	this->hitPoints = 12;
+	this->initProp();
 }
 
 Mage::Mage(int hitPoints) {
+	this->initProp();
 	this->hitPoints = hitPoints;
 }
 
 Mage::Mage(Weapon& weapon) {
-	Mage();
+	this->initProp();
 	this->weapon = weapon;
 }
 
@@ -29,6 +30,28 @@ Mage::Mage(int hitPoints, Weapon& weapon) {
 
 Mage::~Mage() {
 	// TODO Auto-generated destructor stub
+}
+
+void Mage::initProp() {
+	ifstream mageSource;
+	mageSource.open("data/priestess.csv");
+
+	string line;
+
+	while(!mageSource.eof()) {
+		getline(mageSource, line);
+
+		unsigned int startPosition = 0;
+		unsigned int endPosition = 0;
+
+		do {
+			endPosition = line.find(";", startPosition);
+			string value = line.substr(startPosition, endPosition - startPosition);
+			this->hitPoints = stoi(value);
+			startPosition = endPosition + 1;
+		}
+		while((startPosition !=0) && (line.length() != startPosition));
+	}
 }
 
 bool Mage::isDead() {

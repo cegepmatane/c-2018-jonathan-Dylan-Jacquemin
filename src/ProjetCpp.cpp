@@ -7,6 +7,7 @@
 //============================================================================
 
 #include <iostream>
+#include <fstream>
 
 #include "Archer.h"
 #include "Bow.h"
@@ -36,22 +37,29 @@ int main() {
 
 	cout << "Archer current HP : " << archer->hitPoints << endl;
 
-	archer->exportDatas();
+	// Data export
+	ofstream worldFile;
+	worldFile.open("data/world.xml");
+		worldFile << "<World>" << endl;
+			worldFile << "<Character>" << endl;
+				worldFile << archer->exportDatas() << endl;
+				worldFile << mage->exportDatas() << endl;
+				worldFile << priestess->exportDatas() << endl;
+			worldFile << "</Character>" << endl;
+			worldFile << "<Spell>" << endl;
+				worldFile << bow->exportDatas() << endl;
+				worldFile << spell->exportDatas() << endl;
+				worldFile << staff->exportDatas() << endl;
+			worldFile << "</Spell>" << endl;
+		worldFile << "</World>" << endl;
+	worldFile.close();
+
 	delete archer;
-
-	mage->exportDatas();
 	delete mage;
-
-	priestess->exportDatas();
 	delete priestess;
 
-	bow->exportDatas();
 	delete bow;
-
-	spell->exportDatas();
 	delete spell;
-
-	staff->exportDatas();
 	delete staff;
 
 	return 0;

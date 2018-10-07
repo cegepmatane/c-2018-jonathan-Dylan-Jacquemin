@@ -10,15 +10,16 @@
 namespace std {
 
 Archer::Archer() {
-	this->hitPoints = 16;
+	this->initProp();
 }
 
 Archer::Archer(int hitPoints) {
+	this->initProp();
 	this->hitPoints = hitPoints;
 }
 
 Archer::Archer(Weapon& weapon) {
-	Archer();
+	this->initProp();
 	this->weapon = weapon;
 }
 
@@ -29,6 +30,28 @@ Archer::Archer(int hitPoints, Weapon& weapon) {
 
 Archer::~Archer() {
 	// TODO Auto-generated destructor stub
+}
+
+void Archer::initProp() {
+	ifstream archerSource;
+	archerSource.open("data/priestess.csv");
+
+	string line;
+
+	while(!archerSource.eof()) {
+		getline(archerSource, line);
+
+		unsigned int startPosition = 0;
+		unsigned int endPosition = 0;
+
+		do {
+			endPosition = line.find(";", startPosition);
+			string value = line.substr(startPosition, endPosition - startPosition);
+			this->hitPoints = stoi(value);
+			startPosition = endPosition + 1;
+		}
+		while((startPosition !=0) && (line.length() != startPosition));
+	}
 }
 
 bool Archer::isDead() {

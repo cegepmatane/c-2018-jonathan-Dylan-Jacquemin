@@ -25,17 +25,10 @@ void Bow::giveWeaponSpecifications() {
 	cout << "A mystic bow. Deals " << this->damageAmmount << " damage." << endl;
 }
 
-void Bow::exportDatas() {
-	ofstream file("data/bow.csv", ios::out | ios::trunc);
-	if(file) {
-		string className = "Bow";
-
-		file << className << ";" << this->damageAmmount << ";" << endl;
-		file.close();
-		cout << "Bow datas succesfully exported" << endl;
-	}
-	else
-		cerr << "Error while oppening the file \"bow.csv\"" << endl;
+string Bow::exportDatas() {
+	stringstream xml;
+	xml << "<Bow><damageAmmount>" << this->damageAmmount << "</damageAmmount>" << "</Bow>";
+	return xml.str();
 }
 
 } /* namespace std */
