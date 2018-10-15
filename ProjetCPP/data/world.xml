@@ -1,0 +1,12 @@
+<World>
+<Character>
+<Archer><hitPoints>13</hitPoints></Archer>
+<Mage><hitPoints>12</hitPoints></Mage>
+<Priestess><hitPoints>20</hitPoints></Priestess>
+</Character>
+<Spell>
+<Bow><damageAmmount>3</damageAmmount></Bow>
+<Spell><damageAmmount>4</damageAmmount></Spell>
+<Staff><damageAmmount>-5</damageAmmount></Staff>
+</Spell>
+</World>
