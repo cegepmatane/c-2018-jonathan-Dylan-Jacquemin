@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <filesystem>
 #include <vector>
 
 #include "Archer.h"
@@ -17,11 +18,24 @@
 #include "Priestess.h"
 #include "Spell.h"
 #include "Staff.h"
+
 #include "Weapon.h"
+#include "conio.h"
+#include <thread>
+#include <chrono>
+
+#if __cplusplus < 201703L // If the version of C++ is less than 17
+	// It was still in the experimental:: namespace
+namespace fs = std::experimental::filesystem;
+#else
+namespace fs = std::filesystem;
+#endif
 
 using namespace std;
 
 int main() {
+	fs::create_directory("./data");
+
 	vector<Weapon*> weaponsList;
 	vector<Character*> charactersList;
 
@@ -49,6 +63,34 @@ int main() {
 	mage->useWeapon(*archer);
 	mage->useWeapon(*archer);
 	cout << "Archer current HP : " << archer->hitPoints << endl;
+
+	// Game Loop
+
+	cout << "Welcome to the battleground !" << endl;
+	cout << "To quit the game, press on ESC key." << endl;
+
+	int turn = 0;
+	int key;
+	bool gameIsRunning = true;
+
+	while (gameIsRunning) {
+		this_thread::sleep_for(chrono::milliseconds(1000 / 120)); // 120 fps
+
+		if (_kbhit()) {
+			key = _getch();
+			cout << "key pressed : " << key << " " << turn << endl;
+			switch (key) {
+			// case 27
+			case 27:
+				gameIsRunning = false;
+				break;
+			}
+		}
+		while (_kbhit())
+			_getch();
+		//cout << "turn " << turn << endl;
+		turn++;
+	}
 
 	// Data export
 	ofstream worldFile;
