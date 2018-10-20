@@ -25,6 +25,7 @@ public:
 	virtual void initProp();
 	virtual void giveWeaponSpecifications();
 	virtual string exportDatas();
+	virtual int operator+(Weapon&);
 };
 
 } /* namespace std */

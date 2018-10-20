@@ -25,6 +25,8 @@ void Character::useWeapon(Character& character) {}
 
 void Character::changeWeapon(Weapon& weapon) {}
 
+void Character::dealDamage(Character& character, int damageAmmount) {}
+
 string Character::exportDatas() {return "";}
 
 } /* namespace std */

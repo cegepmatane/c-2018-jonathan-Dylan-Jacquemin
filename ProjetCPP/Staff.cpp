@@ -66,4 +66,11 @@ string Staff::exportDatas() {
 	return xml.str();
 }
 
+int Staff::operator+(Weapon & other)
+{
+	int damageCombined;
+	damageCombined = this->damageAmmount + other.damageAmmount;
+	return damageCombined;
+}
+
 } /* namespace std */

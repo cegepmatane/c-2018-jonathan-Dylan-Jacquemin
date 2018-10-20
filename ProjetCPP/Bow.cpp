@@ -65,4 +65,11 @@ string Bow::exportDatas() {
 	return xml.str();
 }
 
+int Bow::operator+(Weapon & other)
+{
+	int damageCombined;
+	damageCombined = this->damageAmmount + other.damageAmmount;
+	return damageCombined;
+}
+
 } /* namespace std */

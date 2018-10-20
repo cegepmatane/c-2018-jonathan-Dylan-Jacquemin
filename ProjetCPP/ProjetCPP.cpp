@@ -125,14 +125,18 @@ int main() {
 					case 97:
 						if ((currentCharacter->getName())._Equal("Archer")) {
 							cout << "- " << currentCharacter->getName() << " : I see yaaa~" << endl;
-							//TODO additioner les attaques avec une surcharge d'opé
-							//currentCharacter->useWeapon(*ennemy);
+							cout << "You shoot a fire arrow thanks to the help of the mage." << endl;
+							this_thread::sleep_for(chrono::milliseconds(1500));
+							// Weapon addition :
+							currentCharacter->dealDamage(*ennemy, *bow + *spell);
 							cout << "Ennemy's HP are now " << ennemy->hitPoints << "\n" << endl;
 						}
 						else if ((currentCharacter->getName())._Equal("Mage")) {
-							cout << "- " << currentCharacter->getName() << " : " << endl;
-							//TODO additioner les attaques avec une surcharge d'opé
-							//currentCharacter->useWeapon(*ennemy);
+							cout << "- " << currentCharacter->getName() << " : See if you can handle this !" << endl;
+							cout << "You are casting a HUGE fireball !" << endl;
+							this_thread::sleep_for(chrono::milliseconds(1500));
+							// Weapon addition :
+							currentCharacter->dealDamage(*ennemy, *spell + *spell);
 							cout << "Ennemy's HP are now " << ennemy->hitPoints << "\n" << endl;
 						}
 						else if ((currentCharacter->getName())._Equal("Priestess")) {

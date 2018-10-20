@@ -84,6 +84,10 @@ void Priestess::changeWeapon(Weapon& weapon) {
 	this->weapon = weapon;
 }
 
+void Priestess::dealDamage(Character& character, int damageAmmount) {
+	character.hitPoints = character.hitPoints - damageAmmount;
+}
+
 string Priestess::exportDatas() {
 	stringstream xml;
 	xml << "<Priestess><hitPoints>" << this->hitPoints << "</hitPoints>" << "</Priestess>";

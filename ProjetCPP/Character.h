@@ -37,6 +37,7 @@ public:
 	};
 	virtual void useWeapon(Character&);
 	virtual void changeWeapon(Weapon&);
+	virtual void dealDamage(Character&, int);
 	virtual string exportDatas();
 };
 

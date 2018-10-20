@@ -26,6 +26,7 @@ public:
 	bool isDead();
 	void useWeapon(Character&);
 	void changeWeapon(Weapon&);
+	void dealDamage(Character&, int);
 	string exportDatas();
 };
 

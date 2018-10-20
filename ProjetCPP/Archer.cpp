@@ -84,6 +84,10 @@ void Archer::changeWeapon(Weapon& weapon) {
 	this->weapon = weapon;
 }
 
+void Archer::dealDamage(Character& character, int damageAmmount) {
+	character.hitPoints = character.hitPoints - damageAmmount;
+}
+
 string Archer::exportDatas() {
 	stringstream xml;
 	xml << "<Archer><hitPoints>" << this->hitPoints << "</hitPoints>" << "</Archer>";

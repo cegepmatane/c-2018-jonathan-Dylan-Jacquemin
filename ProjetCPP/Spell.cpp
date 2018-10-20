@@ -66,4 +66,11 @@ string Spell::exportDatas() {
 	return xml.str();
 }
 
+int Spell::operator+(Weapon & other)
+{
+	int damageCombined;
+	damageCombined = this->damageAmmount + other.damageAmmount;
+	return damageCombined;
+}
+
 } /* namespace std */

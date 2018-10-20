@@ -84,6 +84,10 @@ void Mage::changeWeapon(Weapon& weapon) {
 	this->weapon = weapon;
 }
 
+void Mage::dealDamage(Character& character, int damageAmmount) {
+	character.hitPoints = character.hitPoints - damageAmmount;
+}
+
 string Mage::exportDatas() {
 	stringstream xml;
 	xml << "<Mage><hitPoints>" << this->hitPoints << "</hitPoints>" << "</Mage>";

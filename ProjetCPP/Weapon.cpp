@@ -21,4 +21,9 @@ void Weapon::giveWeaponSpecifications() {}
 
 string Weapon::exportDatas() {return "";}
 
+int Weapon::operator+(Weapon &)
+{
+	return 0;
+}
+
 } /* namespace std */
