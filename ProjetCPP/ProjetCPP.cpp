@@ -25,7 +25,6 @@
 #include <chrono>
 
 #if __cplusplus < 201703L // If the version of C++ is less than 17
-	// It was still in the experimental:: namespace
 namespace fs = std::experimental::filesystem;
 #else
 namespace fs = std::filesystem;
@@ -88,6 +87,27 @@ int main() {
 				// case "ESCAPE", to quit the game
 				case 27:
 					gameIsRunning = false;
+					break;
+
+				// UP
+				case 122:
+					cout << "move up" << endl;
+					waitCount = 0;
+					break;
+				// LEFT
+				case 113:
+					cout << "move left" << endl;
+					waitCount = 0;
+					break;
+				// DOWN
+				case 115:
+					cout << "move down" << endl;
+					waitCount = 0;
+					break;
+				// RIGHT
+				case 100:
+					cout << "move right" << endl;
+					waitCount = 0;
 					break;
 
 				// case "SPACE"

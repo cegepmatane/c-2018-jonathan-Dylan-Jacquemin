@@ -2,3 +2,4 @@
 ./ProjetCPP/data
 ./ProjetCPP/Release
 ./.vs/
+*.opendb
