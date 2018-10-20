@@ -57,6 +57,9 @@ int main() {
 	charactersList.push_back(mage);
 	charactersList.push_back(priestess);
 
+	Character* ennemy = new Mage(100, *spell);
+	charactersList.push_back(ennemy);
+
 	// Game Loop
 	cout << "To quit the game, press on ESC key. \n" << endl;
 	cout << "|====| Welcome to the battleground ! |====|" << endl;
@@ -71,7 +74,7 @@ int main() {
 	bool isPlayingAction = false;
 
 	Character* currentCharacter = charactersList.at(playingCharacterNumber);
-	cout << "You currently are playing archer (" << currentCharacter->hitPoints << "HP)" << endl;
+	cout << "You currently are playing archer (" << currentCharacter->hitPoints << "HP) \n" << endl;
 
 	while (gameIsRunning) {
 		this_thread::sleep_for(chrono::milliseconds(1000 / 120)); // 120 fps
@@ -79,10 +82,10 @@ int main() {
 		if (waitCount != 0) {
 			if (_kbhit()) {
 				key = _getch();
-				cout << "key pressed : " << key << " " << frames << endl;
+				//cout << "key pressed : " << key << " frame n." << frames << endl;
 
 				switch (key) {
-				// case "ESCAPE"
+				// case "ESCAPE", to quit the game
 				case 27:
 					gameIsRunning = false;
 					break;
@@ -92,7 +95,7 @@ int main() {
 					cout << "Swaping the caracter..." << endl;
 					playingCharacterNumber += 1;
 					currentCharacter = charactersList.at(playingCharacterNumber % 3);
-					cout << "You are now playing as : " << currentCharacter->getName() << "(" << currentCharacter->hitPoints << "HP)" << endl;
+					cout << "You are now playing as : " << currentCharacter->getName() << "(" << currentCharacter->hitPoints << "HP)\n" << endl;
 					
 					waitCount = 0;
 					break;
@@ -108,40 +111,76 @@ int main() {
 					cout << "Press :" << endl;
 					cout << "	- 'a' to unleash your ultimate" << endl;
 					cout << "	- 'e' to do a simple attack" << endl;
-					cout << "	- 'p' to use a potion" << endl;
+					cout << "	- 'p' to use a potion \n" << endl;
 					isPlayingAction = true;
 					break;
 
 				}
 
-				// In case the player has chosen to interact (with 'ENTER') in the current turn
+				// In case the player has chosen to interact (with 'ENTER') in this turn
 				if (isPlayingAction) {
 					switch (key) {
-					// 'a' ('A' : 65)
+					// 'A' then 'a'
 					case 65:
 					case 97:
 						if ((currentCharacter->getName())._Equal("Archer")) {
-							cout << "" << endl;
+							cout << "I see yaaa~" << endl;
+							//TODO additioner les attaques avec une surcharge d'opé
+							currentCharacter->useWeapon(*ennemy);
+							cout << "Ennemy's HP are now " << ennemy->hitPoints << "\n" << endl;
 						}
 						else if ((currentCharacter->getName())._Equal("Mage")) {
 
-						}
-						else if ((currentCharacter->getName())._Equal("Priestess")) {
+
+							cout << "Ennemy's HP are now " << ennemy->hitPoints << "\n" << endl;
 
 						}
+						else if ((currentCharacter->getName())._Equal("Priestess")) {
+							cout << "I won't let you down my friends !" << endl;
+							for (Character* character : charactersList) {
+								currentCharacter->useWeapon(*character);
+							}
+							// TODO : define a baseHP attribute in std::Character
+							cout << "You healed all your team of " << 0-currentCharacter->weapon.damageAmmount << "HP\n" << endl;
+						}
+						isPlayingAction = false;
 						waitCount = 0;
 						break;
 
-					// 'e' ('E' = 69)
+					// 'E' then 'e'
 					case 69:
 					case 101:
+						if ((currentCharacter->getName())._Equal("Archer")) {
+							cout << "You bend you bow..." << endl;
+							this_thread::sleep_for(chrono::milliseconds(1500));
+							cout << "*whistling*" << endl;
+							currentCharacter->useWeapon(*ennemy);
+							cout << "Ennemy's HP are now " << ennemy->hitPoints << "\n" << endl;
+						}
+						else if ((currentCharacter->getName())._Equal("Mage")) {
+							cout << "You are casting a huge fireball." << endl;
+							this_thread::sleep_for(chrono::milliseconds(1500));
+							cout << "*blast*" << endl;
+							currentCharacter->useWeapon(*ennemy);
+							cout << "Ennemy's HP are now " << ennemy->hitPoints << "\n" << endl;
+						}
+						else if ((currentCharacter->getName())._Equal("Priestess")) {
+							cout << "I won't let you down my friends !" << endl;
+							currentCharacter->useWeapon(*charactersList.at(gameTurn%2));
+							// TODO : define a baseHP attribute in std::Character
+							cout << "You healed an ally for " << 0 - currentCharacter->weapon.damageAmmount << "HP\n" << endl;
+						}
+						isPlayingAction = false;
+						waitCount = 0;
 						break;
 
-					// 'p' ('P' = 80)
+					// 'P' then 'p'
 					case 80:
 					case 112:
+						// TODO : define a baseHP attribute and a method to usePotion in std::Character
 						currentCharacter->hitPoints = currentCharacter->hitPoints + 5;
 						cout << "You used a potion. You now have " << currentCharacter->hitPoints << "HP" << endl;
+						isPlayingAction = false;
 						waitCount = 0;
 						break;
 
@@ -154,10 +193,11 @@ int main() {
 			frames++;
 		}
 		else {
-			// START A NEW TURN
+			// NEW TURN
 			gameTurn++;
 			waitCount = 15;
-			cout << "Turn " << gameTurn << ". You now have 15sec to play your turn." << endl;
+			cout << "Turn " << gameTurn << ". You now have 15sec to play your turn.\n" << endl;
+			// TODO make the ennemy attack
 		}
 
 		if (currentPlayingTime != frames / 120) {
@@ -191,6 +231,8 @@ int main() {
 	delete bow;
 	delete spell;
 	delete staff;
+
+	cout << "Game finished, exported datas can be found on ./data/world.xml" << endl;
 
 	return 0;
 }
