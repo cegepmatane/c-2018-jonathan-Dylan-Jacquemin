@@ -61,15 +61,15 @@ int main() {
 	cout << "To quit the game, press on ESC key. \n" << endl;
 	cout << "Welcome to the battleground !" << endl;
 
-	int turn = 0;
+	int frames = 0;
 	int key;
 	bool gameIsRunning = true;
-	int currentTime = 0;
-	int characterNumber = 0;
+	int currentPlayingTime = 0;
+	int playingCharacterNumber = 0;
 	int waitCount = 0;
 	int gameTurn = 0;
 
-	Character* currentCharacter = charactersList.at(characterNumber);
+	Character* currentCharacter = charactersList.at(playingCharacterNumber);
 	cout << "You currently are playing Archer (" << currentCharacter->hitPoints << "HP)" << endl;
 
 	while (gameIsRunning) {
@@ -88,32 +88,46 @@ int main() {
 					// case "SPACE"
 				case 32:
 					cout << "Swaping the caracter..." << endl;
-					characterNumber += 1;
-					currentCharacter = charactersList.at(characterNumber % 3);
+					playingCharacterNumber += 1;
+					currentCharacter = charactersList.at(playingCharacterNumber % 3);
 					cout << "New character : " << currentCharacter->getName() << endl;
+
 					waitCount = 0;
 					break;
 				case 't':
-					cout << "Current time :" << currentTime << endl;
+					cout << "Current time :" << currentPlayingTime << endl;
 					break;
 				case 13:
-					cout << "|__| Interaction Menu |__|" << endl;
+					cout << "|==| Interaction Menu |==|" << endl;
+					cout << "HP : " << currentCharacter->hitPoints << " | DMG : " << currentCharacter->weapon.damageAmmount << endl;
+
+					if ((currentCharacter->getName())._Equal("Archer")) {
+						cout << "archer menu" << endl;
+					}
+					else if ((currentCharacter->getName())._Equal("Mage")) {
+
+					}
+					else if ((currentCharacter->getName())._Equal("Mage")) {
+
+					}
+
 					break;
 				}
 			}
 			while (_kbhit())
 				_getch();
-			//cout << "turn " << turn << endl;
-			turn++;
+			//cout << "frames " << frames << endl;
+			frames++;
 		}
 		else {
+			// START A NEW TURN
 			gameTurn++;
 			waitCount = 15;
 			cout << "Turn " << gameTurn << ". You now have 15sec to play your turn." << endl;
 		}
 
-		if (currentTime != turn / 120) {
-			currentTime = turn / 120;
+		if (currentPlayingTime != frames / 120) {
+			currentPlayingTime = frames / 120;
 			waitCount--;
 		}
 
