@@ -66,44 +66,57 @@ int main() {
 	bool gameIsRunning = true;
 	int currentTime = 0;
 	int characterNumber = 0;
+	int waitCount = 0;
+	int gameTurn = 0;
 
 	Character* currentCharacter = charactersList.at(characterNumber);
 	cout << "You currently are playing Archer (" << currentCharacter->hitPoints << "HP)" << endl;
 
 	while (gameIsRunning) {
 		this_thread::sleep_for(chrono::milliseconds(1000 / 120)); // 120 fps
-		
-		if (currentTime != turn/120)
-		{
-			// cout << "Current time :" << turn / 120 << endl;
-			currentTime = turn / 120;
-		}
-		
-		if (_kbhit()) {
-			key = _getch();
-			//cout << "key pressed : " << key << " " << turn << endl;
 
-			switch (key) {
-			// case "ESCAPE"
-			case 27:
-				gameIsRunning = false;
-				break;
-			// case "SPACE"
-			case 32:
-				cout << "Swaping the caracter..." << endl;
-				characterNumber += 1;
-				currentCharacter = charactersList.at(characterNumber % 3);
-				cout << "New character : " << currentCharacter->getName() << endl;
-				break;
-			case 'T':
-				cout << "Current time :" << currentTime << endl;
-				break;
+		if (waitCount != 0) {
+			if (_kbhit()) {
+				key = _getch();
+				//cout << "key pressed : " << key << " " << turn << endl;
+
+				switch (key) {
+					// case "ESCAPE"
+				case 27:
+					gameIsRunning = false;
+					break;
+					// case "SPACE"
+				case 32:
+					cout << "Swaping the caracter..." << endl;
+					characterNumber += 1;
+					currentCharacter = charactersList.at(characterNumber % 3);
+					cout << "New character : " << currentCharacter->getName() << endl;
+					waitCount = 0;
+					break;
+				case 't':
+					cout << "Current time :" << currentTime << endl;
+					break;
+				case 13:
+					cout << "|__| Interaction Menu |__|" << endl;
+					break;
+				}
 			}
+			while (_kbhit())
+				_getch();
+			//cout << "turn " << turn << endl;
+			turn++;
 		}
-		while (_kbhit())
-			_getch();
-		//cout << "turn " << turn << endl;
-		turn++;
+		else {
+			gameTurn++;
+			waitCount = 15;
+			cout << "Turn " << gameTurn << ". You now have 15sec to play your turn." << endl;
+		}
+
+		if (currentTime != turn / 120) {
+			currentTime = turn / 120;
+			waitCount--;
+		}
+
 	}
 
 	// Data export
