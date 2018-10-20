@@ -33,6 +33,8 @@ Mage::~Mage() {
 }
 
 void Mage::initProp() {
+	this->name = "Mage";
+
 	ifstream mageSource("data/mage.csv");
 
 	if (mageSource.peek() == std::ifstream::traits_type::eof()) {
@@ -64,6 +66,10 @@ void Mage::initProp() {
 		}
 		while((startPosition !=0) && (line.length() != startPosition));
 	}
+}
+
+string Mage::getName() {
+	return this->name;
 }
 
 bool Mage::isDead() {

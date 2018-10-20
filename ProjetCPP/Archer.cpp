@@ -33,6 +33,8 @@ Archer::~Archer() {
 }
 
 void Archer::initProp() {
+	this->name = "Archer";
+
 	ifstream archerSource("data/archer.csv");
 
 	if (archerSource.peek() == std::ifstream::traits_type::eof()) {
@@ -64,6 +66,10 @@ void Archer::initProp() {
 		}
 		while((startPosition !=0) && (line.length() != startPosition));
 	}
+}
+
+string Archer::getName() {
+	return this->name;
 }
 
 bool Archer::isDead() {

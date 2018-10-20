@@ -1,6 +1,6 @@
 <World>
 <Character>
-<Archer><hitPoints>13</hitPoints></Archer>
+<Archer><hitPoints>16</hitPoints></Archer>
 <Mage><hitPoints>12</hitPoints></Mage>
 <Priestess><hitPoints>20</hitPoints></Priestess>
 </Character>

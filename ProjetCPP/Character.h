@@ -25,9 +25,13 @@ public:
 	virtual ~Character();
 	// attributes
 	int hitPoints;
+	string name;
 	Weapon weapon;
 	// methods
 	virtual void initProp();
+	virtual string getName() {
+		return "";
+	};
 	virtual bool isDead() {
 		return true;
 	};

@@ -33,6 +33,8 @@ Priestess::~Priestess() {
 }
 
 void Priestess::initProp() {
+	this->name = "Priestess";
+
 	ifstream priestessSource("data/priestess.csv");
 
 	if (priestessSource.peek() == std::ifstream::traits_type::eof()) {
@@ -64,6 +66,10 @@ void Priestess::initProp() {
 		}
 		while((startPosition !=0) && (line.length() != startPosition));
 	}
+}
+
+string Priestess::getName() {
+	return this->name;
 }
 
 bool Priestess::isDead() {

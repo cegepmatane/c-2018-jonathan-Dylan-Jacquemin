@@ -22,6 +22,7 @@ public:
 	virtual ~Mage();
 	// methods
 	void initProp();
+	string getName();
 	bool isDead();
 	void useWeapon(Character&);
 	void changeWeapon(Weapon&);
