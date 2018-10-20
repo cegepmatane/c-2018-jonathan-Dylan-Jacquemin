@@ -109,9 +109,9 @@ int main() {
 					cout << "|==| Interaction Menu |==|" << endl;
 					cout << "HP : " << currentCharacter->hitPoints << " | DMG : " << currentCharacter->weapon.damageAmmount << endl;
 					cout << "Press :" << endl;
-					cout << "	- 'a' to unleash your ultimate" << endl;
-					cout << "	- 'e' to do a simple attack" << endl;
-					cout << "	- 'p' to use a potion \n" << endl;
+					cout << " - 'a' to unleash your ultimate" << endl;
+					cout << " - 'e' to do a simple attack" << endl;
+					cout << " - 'p' to use a potion \n" << endl;
 					isPlayingAction = true;
 					break;
 
@@ -124,19 +124,19 @@ int main() {
 					case 65:
 					case 97:
 						if ((currentCharacter->getName())._Equal("Archer")) {
-							cout << "I see yaaa~" << endl;
+							cout << "- " << currentCharacter->getName() << " : I see yaaa~" << endl;
 							//TODO additioner les attaques avec une surcharge d'opé
-							currentCharacter->useWeapon(*ennemy);
+							//currentCharacter->useWeapon(*ennemy);
 							cout << "Ennemy's HP are now " << ennemy->hitPoints << "\n" << endl;
 						}
 						else if ((currentCharacter->getName())._Equal("Mage")) {
-
-
+							cout << "- " << currentCharacter->getName() << " : " << endl;
+							//TODO additioner les attaques avec une surcharge d'opé
+							//currentCharacter->useWeapon(*ennemy);
 							cout << "Ennemy's HP are now " << ennemy->hitPoints << "\n" << endl;
-
 						}
 						else if ((currentCharacter->getName())._Equal("Priestess")) {
-							cout << "I won't let you down my friends !" << endl;
+							cout << "- " << currentCharacter->getName() << " : I won't let you down, my friends !" << endl;
 							for (Character* character : charactersList) {
 								currentCharacter->useWeapon(*character);
 							}
@@ -151,21 +151,22 @@ int main() {
 					case 69:
 					case 101:
 						if ((currentCharacter->getName())._Equal("Archer")) {
-							cout << "You bend you bow..." << endl;
+							cout << "*bow bending*" << endl;
 							this_thread::sleep_for(chrono::milliseconds(1500));
 							cout << "*whistling*" << endl;
 							currentCharacter->useWeapon(*ennemy);
 							cout << "Ennemy's HP are now " << ennemy->hitPoints << "\n" << endl;
 						}
 						else if ((currentCharacter->getName())._Equal("Mage")) {
-							cout << "You are casting a huge fireball." << endl;
+							cout << "*fire*" << endl;
 							this_thread::sleep_for(chrono::milliseconds(1500));
 							cout << "*blast*" << endl;
 							currentCharacter->useWeapon(*ennemy);
 							cout << "Ennemy's HP are now " << ennemy->hitPoints << "\n" << endl;
 						}
 						else if ((currentCharacter->getName())._Equal("Priestess")) {
-							cout << "I won't let you down my friends !" << endl;
+							cout << "- " << currentCharacter->getName() << " : Come here, I will heal you~" << endl;
+							this_thread::sleep_for(chrono::milliseconds(1000));
 							currentCharacter->useWeapon(*charactersList.at(gameTurn%2));
 							// TODO : define a baseHP attribute in std::Character
 							cout << "You healed an ally for " << 0 - currentCharacter->weapon.damageAmmount << "HP\n" << endl;
