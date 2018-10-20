@@ -59,7 +59,7 @@ int main() {
 
 	// Game Loop
 	cout << "To quit the game, press on ESC key. \n" << endl;
-	cout << "Welcome to the battleground !" << endl;
+	cout << "|====| Welcome to the battleground ! |====|" << endl;
 
 	int frames = 0;
 	int key;
@@ -68,9 +68,10 @@ int main() {
 	int playingCharacterNumber = 0;
 	int waitCount = 0;
 	int gameTurn = 0;
+	bool isPlayingAction = false;
 
 	Character* currentCharacter = charactersList.at(playingCharacterNumber);
-	cout << "You currently are playing Archer (" << currentCharacter->hitPoints << "HP)" << endl;
+	cout << "You currently are playing archer (" << currentCharacter->hitPoints << "HP)" << endl;
 
 	while (gameIsRunning) {
 		this_thread::sleep_for(chrono::milliseconds(1000 / 120)); // 120 fps
@@ -78,40 +79,73 @@ int main() {
 		if (waitCount != 0) {
 			if (_kbhit()) {
 				key = _getch();
-				//cout << "key pressed : " << key << " " << turn << endl;
+				cout << "key pressed : " << key << " " << frames << endl;
 
 				switch (key) {
-					// case "ESCAPE"
+				// case "ESCAPE"
 				case 27:
 					gameIsRunning = false;
 					break;
-					// case "SPACE"
+
+				// case "SPACE"
 				case 32:
 					cout << "Swaping the caracter..." << endl;
 					playingCharacterNumber += 1;
 					currentCharacter = charactersList.at(playingCharacterNumber % 3);
-					cout << "New character : " << currentCharacter->getName() << endl;
-
+					cout << "You are now playing as : " << currentCharacter->getName() << "(" << currentCharacter->hitPoints << "HP)" << endl;
+					
 					waitCount = 0;
 					break;
+
 				case 't':
 					cout << "Current time :" << currentPlayingTime << endl;
 					break;
+
+				// case 'ENTER'
 				case 13:
 					cout << "|==| Interaction Menu |==|" << endl;
 					cout << "HP : " << currentCharacter->hitPoints << " | DMG : " << currentCharacter->weapon.damageAmmount << endl;
-
-					if ((currentCharacter->getName())._Equal("Archer")) {
-						cout << "archer menu" << endl;
-					}
-					else if ((currentCharacter->getName())._Equal("Mage")) {
-
-					}
-					else if ((currentCharacter->getName())._Equal("Mage")) {
-
-					}
-
+					cout << "Press :" << endl;
+					cout << "	- 'a' to unleash your ultimate" << endl;
+					cout << "	- 'e' to do a simple attack" << endl;
+					cout << "	- 'p' to use a potion" << endl;
+					isPlayingAction = true;
 					break;
+
+				}
+
+				// In case the player has chosen to interact (with 'ENTER') in the current turn
+				if (isPlayingAction) {
+					switch (key) {
+					// 'a' ('A' : 65)
+					case 65:
+					case 97:
+						if ((currentCharacter->getName())._Equal("Archer")) {
+							cout << "" << endl;
+						}
+						else if ((currentCharacter->getName())._Equal("Mage")) {
+
+						}
+						else if ((currentCharacter->getName())._Equal("Priestess")) {
+
+						}
+						waitCount = 0;
+						break;
+
+					// 'e' ('E' = 69)
+					case 69:
+					case 101:
+						break;
+
+					// 'p' ('P' = 80)
+					case 80:
+					case 112:
+						currentCharacter->hitPoints = currentCharacter->hitPoints + 5;
+						cout << "You used a potion. You now have " << currentCharacter->hitPoints << "HP" << endl;
+						waitCount = 0;
+						break;
+
+					}
 				}
 			}
 			while (_kbhit())
