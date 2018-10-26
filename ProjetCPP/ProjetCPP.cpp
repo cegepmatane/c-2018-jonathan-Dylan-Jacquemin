@@ -23,6 +23,8 @@ int main() {
 	cout << "To quit the game, press on ESC key. \n" << endl;
 	cout << "|====| Welcome to the battleground ! |====|" << endl;
 
+	World* world = new World();
+
 	// SFML components
 	sf::RenderWindow window(sf::VideoMode(1600, 900), "C++ Project");
 	
@@ -37,13 +39,13 @@ int main() {
 	}
 
 	sf::Texture* characterTexture = new sf::Texture();
-	if (!characterTexture->loadFromFile("data/ressources/textures/archer.png")) {
+	if (!characterTexture->loadFromFile("data/ressources/textures/" + world->currentCharacter->getPath())) {
 		cout << "Load failed for archer.png " << endl;
 		system("pause");
 	}
 
 	sf::Texture* weaponTexture = new sf::Texture();
-	if (!weaponTexture->loadFromFile("data/ressources/textures/bow.png")) {
+	if (!weaponTexture->loadFromFile("data/ressources/textures/" + world->currentCharacter->weapon->getPath())) {
 		cout << "Load failed for bow.png " << endl;
 		system("pause");
 	}
@@ -71,8 +73,6 @@ int main() {
 	sf::Vector2f* leftMoveVector2f = new sf::Vector2f(-100, 0);
 	sf::Vector2f* downMoveVector2f = new sf::Vector2f(0, 100);
 	sf::Vector2f* rightMoveVector2f = new sf::Vector2f(100, 0);
-
-	World* world = new World();
 
 	int frames = 0;
 	int key;

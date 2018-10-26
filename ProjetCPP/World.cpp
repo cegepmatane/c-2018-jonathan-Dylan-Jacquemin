@@ -7,7 +7,7 @@ World::World() {
 	Weapon* spell = new Spell();
 	Weapon* staff = new Staff();
 
-	weaponsList.push_back(bow);
+	weaponsList.push_back(spell);
 	weaponsList.push_back(spell);
 	weaponsList.push_back(staff);
 
