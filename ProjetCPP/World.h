@@ -27,5 +27,5 @@ class World {
 		int gameTurn;
 		//methods
 		void nextCharacter();
-		void save();
+		void saveState();
 };

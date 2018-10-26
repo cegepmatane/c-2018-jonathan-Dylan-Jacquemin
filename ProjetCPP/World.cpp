@@ -42,7 +42,7 @@ void World::nextCharacter() {
 	this->currentCharacter = this->charactersList.at(this->playingCharacterNumber);
 }
 
-void World::save() {
+void World::saveState() {
 	// Data export
 	ofstream worldFile;
 	worldFile.open("data/world.xml");

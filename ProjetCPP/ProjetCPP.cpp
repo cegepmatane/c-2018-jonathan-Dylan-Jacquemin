@@ -4,6 +4,7 @@
 #include <thread>
 #include <chrono>
 #include <iostream>
+#include <SFML/Graphics.hpp>
 
 #include "World.h"
 
@@ -22,6 +23,63 @@ int main() {
 	// Game Loop
 	cout << "To quit the game, press on ESC key. \n" << endl;
 	cout << "|====| Welcome to the battleground ! |====|" << endl;
+
+
+
+
+
+	// SFML
+	sf::RenderWindow window(sf::VideoMode(1600, 900), "Sprite drawing!");
+
+	sf::Texture texture;
+
+	sf::Font* police = new sf::Font();
+	police->loadFromFile("./data/Roboto-Regular.ttf");
+
+	int i = 0;
+
+	if (!texture.loadFromFile("data/grass-sd.png")) {
+		cout << "Load failed" << endl;
+
+		system("pause");
+	}
+
+	sf::Sprite sprite;
+	sprite.setTexture(texture);
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+
+		i += 1;
+
+		window.clear();
+
+		window.draw(sprite);
+
+		sf::Vector2f* vecteur = new sf::Vector2f(1, 1);
+		sprite.move(*vecteur);
+
+		sf::Text* texteAAfficher = new sf::Text("ALED" + to_string(i), *police, 50);
+
+		window.draw(*texteAAfficher);
+		texteAAfficher->move(2, 2);
+
+		window.display();
+	}
+
+
+
+
+
+
+
+
 
 	World* world = new World();
 
@@ -148,7 +206,7 @@ int main() {
 
 	}
 
-	world->save();
+	world->saveState();
 
 	return 0;
 }
