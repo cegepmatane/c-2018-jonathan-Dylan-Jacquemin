@@ -34,19 +34,19 @@ int main() {
 	// SFML Textures
 	sf::Texture* grassTexture = new sf::Texture();
 	if (!grassTexture->loadFromFile("data/ressources/textures/grass.jpg")) {
-		cout << "Load failed for grass.jpg " << endl;
+		cout << "Load failed for grass.jpg" << endl;
 		system("pause");
 	}
 
 	sf::Texture* characterTexture = new sf::Texture();
 	if (!characterTexture->loadFromFile("data/ressources/textures/" + world->currentCharacter->getPath())) {
-		cout << "Load failed for archer.png " << endl;
+		cout << "Load failed for character texture" << endl;
 		system("pause");
 	}
 
 	sf::Texture* weaponTexture = new sf::Texture();
 	if (!weaponTexture->loadFromFile("data/ressources/textures/" + world->currentCharacter->weapon->getPath())) {
-		cout << "Load failed for bow.png " << endl;
+		cout << "Load failed for the weapon texture" << endl;
 		system("pause");
 	}
 
@@ -64,9 +64,9 @@ int main() {
 	);
 
 	characterSprite->setPosition(1200.0f, 400.0f);
-	characterSprite->setScale(0.125f, 0.125f);
+	characterSprite->setScale(0.143f, 0.143f);
 
-	weaponSprite->setScale(0.08f, 0.08f);
+	weaponSprite->setScale(0.125f, 0.125f);
 
 	// Vectors used for moving textures sprites
 	sf::Vector2f* upMoveVector2f = new sf::Vector2f(0, -100);
