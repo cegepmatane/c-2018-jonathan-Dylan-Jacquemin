@@ -24,7 +24,7 @@ int main() {
 	cout << "|====| Welcome to the battleground ! |====|" << endl;
 
 	// SFML components
-	sf::RenderWindow window(sf::VideoMode(1600, 1000), "C++ Project");
+	sf::RenderWindow window(sf::VideoMode(1600, 900), "C++ Project");
 
 	sf::Font* font = new sf::Font();
 	font->loadFromFile("./data/ressources/fonts/Roboto-Regular.ttf");
@@ -38,17 +38,22 @@ int main() {
 
 	sf::Texture* characterTexture = new sf::Texture();
 	if (!characterTexture->loadFromFile("data/ressources/textures/archer.png")) {
-		cout << "Load failed for grass.jpg " << endl;
+		cout << "Load failed for archer.png " << endl;
 		system("pause");
 	}
 
-	sf::Texture* weaponTexture;
+	sf::Texture* weaponTexture = new sf::Texture();
+	if (!weaponTexture->loadFromFile("data/ressources/textures/bow.png")) {
+		cout << "Load failed for bow.png " << endl;
+		system("pause");
+	}
 
 	// SFML Sprites
 	sf::Sprite* grassSprite = new sf::Sprite(*grassTexture);
 	sf::Sprite* characterSprite = new sf::Sprite(*characterTexture);
+	sf::Sprite* weaponSprite = new sf::Sprite(*weaponTexture);
 
-	// 100px x 100px texture rescaling
+	// Texture rescaling
 	sf::Vector2f targetSize(100.0f, 100.0f);
 
 	grassSprite->setScale(
@@ -57,6 +62,7 @@ int main() {
 	);
 
 	characterSprite->setScale(0.1f, 0.1f);
+	weaponSprite->setScale(0.4f, 0.4f);
 
 	// Vectors used for moving textures sprites
 	sf::Vector2f* upMoveVector2f = new sf::Vector2f(0, -100);
@@ -201,22 +207,27 @@ int main() {
 
 		for (int i = 0; i < 16; i++)
 		{
-			for (int j = 0; j < 10; j++)
+			for (int j = 0; j < 9; j++)
 			{
 				grassSprite->setPosition(i*100.0f, j*100.0f);
 				window.draw(*grassSprite);
 			}
 		}
 
+		// Display current turn number
 		sf::Text* turn = new sf::Text("Turn : " + to_string(world->gameTurn), *font, 20);
 		turn->setPosition(1400.0f, 15.0f);
 		window.draw(*turn);
 
+		// Display seconds timer
 		sf::Text* time = new sf::Text("Time : " + to_string(currentPlayingTime), *font, 20);
 		time->setPosition(1500.0f, 15.0f);
 		window.draw(*time);
 
+		// Sprite draw
 		window.draw(*characterSprite);
+		weaponSprite->setPosition(1500.0f, 800.0f);
+		window.draw(*weaponSprite);
 
 		window.display();
 
@@ -224,9 +235,7 @@ int main() {
 			currentPlayingTime = frames / 120;
 			waitCount--;
 		}
-
 	}
-
 	world->saveState();
 
 	return 0;
