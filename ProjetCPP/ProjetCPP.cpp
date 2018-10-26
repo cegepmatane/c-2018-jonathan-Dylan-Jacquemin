@@ -61,7 +61,9 @@ int main() {
 		targetSize.y / grassSprite->getLocalBounds().height
 	);
 
-	characterSprite->setScale(0.1f, 0.1f);
+	characterSprite->setPosition(1200.0f, 400.0f);
+	characterSprite->setScale(0.125f, 0.125f);
+
 	weaponSprite->setScale(0.08f, 0.08f);
 
 	// Vectors used for moving textures sprites
@@ -219,6 +221,7 @@ int main() {
 
 		window.clear();
 
+		// Display the grass background
 		for (int i = 0; i < 16; i++)
 		{
 			for (int j = 0; j < 9; j++)
@@ -228,20 +231,30 @@ int main() {
 			}
 		}
 
+		// Display sprites
+		window.draw(*characterSprite);
+		weaponSprite->setPosition(1500.0f, 800.0f);
+		window.draw(*weaponSprite);
+
 		// Display current turn number
 		sf::Text* turn = new sf::Text("Turn : " + to_string(world->gameTurn), *font, 20);
 		turn->setPosition(1400.0f, 15.0f);
 		window.draw(*turn);
 
-		// Display seconds timer
+		// Display timer
 		sf::Text* time = new sf::Text("Time : " + to_string(currentPlayingTime), *font, 20);
 		time->setPosition(1500.0f, 15.0f);
 		window.draw(*time);
 
-		// Sprite draw
-		window.draw(*characterSprite);
-		weaponSprite->setPosition(1500.0f, 800.0f);
-		window.draw(*weaponSprite);
+		// Display current hitpoints
+		sf::Text* myHitPoints = new sf::Text("HP : " + to_string(world->currentCharacter->hitPoints), *font, 20);
+		myHitPoints->setPosition(1300.0f, 15.0f);
+		window.draw(*myHitPoints);
+
+		// Display ennemy hitpoints
+		sf::Text* ennemyHitPoints = new sf::Text("Ennemy HP : " + to_string(ennemy->hitPoints), *font, 20);
+		ennemyHitPoints->setPosition(50.0f, 15.0f);
+		window.draw(*ennemyHitPoints);
 
 		window.display();
 
