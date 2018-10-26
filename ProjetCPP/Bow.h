@@ -15,4 +15,5 @@ public:
 	void giveWeaponSpecifications();
 	std::string exportDatas();
 	int operator+(Weapon&);
+	std::string getPath();
 };

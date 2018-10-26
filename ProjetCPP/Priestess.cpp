@@ -105,3 +105,7 @@ void Priestess::pressE(World* world) {
 	// TODO : define a baseHP attribute in std::Character
 	cout << "You healed an ally for " << 0 - world->currentCharacter->weapon->damageAmmount << "HP\n" << endl;
 }
+
+string Priestess::getPath() {
+	return "priestess.png";
+}

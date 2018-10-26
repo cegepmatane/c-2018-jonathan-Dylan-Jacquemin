@@ -18,4 +18,5 @@ class Weapon {
 		virtual void giveWeaponSpecifications();
 		virtual std::string exportDatas();
 		virtual int operator+(Weapon&);
+		virtual std::string getPath();
 };

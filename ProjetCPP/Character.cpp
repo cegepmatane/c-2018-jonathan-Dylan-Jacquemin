@@ -24,3 +24,5 @@ string Character::exportDatas() {return "";}
 void Character::pressA(World* world) {}
 
 void Character::pressE(World* world) {}
+
+string Character::getPath() { return ""; }

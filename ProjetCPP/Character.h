@@ -42,4 +42,5 @@ class Character {
 		virtual std::string exportDatas();
 		virtual void pressA(World*);
 		virtual void pressE(World*);
+		virtual std::string getPath();
 };

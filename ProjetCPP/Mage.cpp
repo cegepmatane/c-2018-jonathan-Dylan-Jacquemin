@@ -107,3 +107,7 @@ void Mage::pressE(World* world) {
 	world->currentCharacter->useWeapon(*ennemy);
 	cout << "Ennemy's HP are now " << ennemy->hitPoints << "\n" << endl;
 }
+
+string Mage::getPath() {
+	return "mage.png";
+}

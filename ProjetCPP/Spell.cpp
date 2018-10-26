@@ -63,3 +63,7 @@ int Spell::operator+(Weapon & other)
 	damageCombined = this->damageAmmount + other.damageAmmount;
 	return damageCombined;
 }
+
+string Spell::getPath() {
+	return "spell.png";
+}

@@ -22,5 +22,6 @@ public:
 	std::string exportDatas();
 	void pressA(World*);
 	void pressE(World*);
+	std::string getPath();
 };
 

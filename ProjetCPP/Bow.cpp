@@ -62,3 +62,7 @@ int Bow::operator+(Weapon & other)
 	damageCombined = this->damageAmmount + other.damageAmmount;
 	return damageCombined;
 }
+
+string Bow::getPath() {
+	return "bow.png";
+}

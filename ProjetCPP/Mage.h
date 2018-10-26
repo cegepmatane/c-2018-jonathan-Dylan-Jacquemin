@@ -22,4 +22,5 @@ class Mage : public Character {
 		std::string exportDatas();
 		void pressA(World*);
 		void pressE(World*);
+		std::string getPath();
 };

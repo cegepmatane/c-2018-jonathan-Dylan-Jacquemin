@@ -25,7 +25,7 @@ int main() {
 
 	// SFML components
 	sf::RenderWindow window(sf::VideoMode(1600, 900), "C++ Project");
-
+	
 	sf::Font* font = new sf::Font();
 	font->loadFromFile("./data/ressources/fonts/Roboto-Regular.ttf");
 
@@ -62,7 +62,7 @@ int main() {
 	);
 
 	characterSprite->setScale(0.1f, 0.1f);
-	weaponSprite->setScale(0.4f, 0.4f);
+	weaponSprite->setScale(0.08f, 0.08f);
 
 	// Vectors used for moving textures sprites
 	sf::Vector2f* upMoveVector2f = new sf::Vector2f(0, -100);
@@ -135,6 +135,20 @@ int main() {
 				case 32:
 					cout << "Swaping the caracter..." << endl;
 					world->nextCharacter();
+
+					// Changing textures of the character and his/her weapon
+					if (!characterTexture->loadFromFile("data/ressources/textures/" + world->currentCharacter->getPath())) {
+						cout << "Load failed for current character image" << endl;
+						system("pause");
+					}
+					characterSprite->setTexture(*characterTexture);
+
+					if (!weaponTexture->loadFromFile("data/ressources/textures/" + world->currentCharacter->weapon->getPath())) {
+						cout << "Load failed for bow.png " << endl;
+						system("pause");
+					}
+					weaponSprite->setTexture(*weaponTexture);
+
 					cout << "You currently are playing " << world->currentCharacter->name
 						<< " (" << world->currentCharacter->hitPoints << "HP) \n" << endl;					
 					waitCount = 0;

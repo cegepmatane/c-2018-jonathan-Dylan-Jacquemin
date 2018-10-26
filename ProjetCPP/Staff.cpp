@@ -63,3 +63,7 @@ int Staff::operator+(Weapon & other)
 	damageCombined = this->damageAmmount + other.damageAmmount;
 	return damageCombined;
 }
+
+string Staff::getPath() {
+	return "staff.png";
+}

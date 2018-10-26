@@ -109,3 +109,7 @@ void Archer::pressE(World* world) {
 	world->currentCharacter->useWeapon(*ennemy);
 	cout << "Ennemy's HP are now " << ennemy->hitPoints << "\n" << endl;
 }
+
+string Archer::getPath() {
+	return "archer.png";
+}
