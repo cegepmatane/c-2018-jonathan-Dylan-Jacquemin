@@ -1,35 +1,26 @@
-/*
- * Archer.h
- *
- *  Created on: 28 sept. 2018
- *      Author: DYLAN-MSI
- */
-
-#ifndef ARCHER_H_
-#define ARCHER_H_
+#pragma once
 
 #include "Character.h"
-#include "Weapon.h"
 
-namespace std {
+using namespace std;
 
 class Archer : public Character {
-public:
-	Archer();
-	Archer(int);
-	Archer(Weapon&);
-	Archer(int, Weapon&);
-	virtual ~Archer();
-	// methods
-	void initProp();
-	string getName();
-	bool isDead();
-	void useWeapon(Character&);
-	void changeWeapon(Weapon&);
-	void dealDamage(Character&, int);
-	string exportDatas();
+	public:
+		Archer();
+		Archer(int);
+		Archer(Weapon&);
+		Archer(int, Weapon&);
+		virtual ~Archer();
+
+		// methods
+		void initProp();
+		std::string getName();
+		bool isDead();
+		void useWeapon(Character&);
+		void changeWeapon(Weapon&);
+		void dealDamage(Character&, int);
+		std::string exportDatas();
+		void pressA(World*);
+		void pressE(World*);
 };
 
-} /* namespace std */
-
-#endif /* ARCHER_H_ */

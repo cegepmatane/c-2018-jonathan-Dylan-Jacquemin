@@ -1,13 +1,6 @@
-/*
- * Weapon.cpp
- *
- *  Created on: 28 sept. 2018
- *      Author: DYLAN-MSI
- */
-
 #include "Weapon.h"
 
-namespace std {
+using namespace std;
 
 Weapon::Weapon() {}
 
@@ -21,9 +14,4 @@ void Weapon::giveWeaponSpecifications() {}
 
 string Weapon::exportDatas() {return "";}
 
-int Weapon::operator+(Weapon &)
-{
-	return 0;
-}
-
-} /* namespace std */
+int Weapon::operator+(Weapon &) {return 0;}

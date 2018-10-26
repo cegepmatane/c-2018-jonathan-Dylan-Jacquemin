@@ -1,13 +1,5 @@
-/*
- * Archer.cpp
- *
- *  Created on: 28 sept. 2018
- *      Author: DYLAN-MSI
- */
-
 #include "Archer.h"
-
-namespace std {
+#include "World.h"
 
 Archer::Archer() {
 	this->initProp();
@@ -94,5 +86,27 @@ string Archer::exportDatas() {
 	return xml.str();
 }
 
+void Archer::pressA(World* world) {
+	cout << "- " << this->getName() << " : I see yaaa~" << endl;
+	cout << "You shoot a fire arrow thanks to the help of the mage." << endl;
+	this_thread::sleep_for(chrono::milliseconds(1500));
+	
+	Character* ennemy = world->charactersList.at(3);
+	Weapon* spell = world->weaponsList.at(1);
+	Weapon* bow = world->weaponsList.at(0);
 
-} /* namespace std */
+	// Weapon addition :
+	this->dealDamage(*ennemy, *spell + *bow);
+	cout << "Ennemy's HP are now " << ennemy->hitPoints << "\n" << endl;
+}
+
+void Archer::pressE(World* world) {
+	Character* ennemy = world->charactersList.at(3);
+
+	cout << "*bow bending*" << endl;
+	this_thread::sleep_for(chrono::milliseconds(1500));
+	cout << "*whistling*" << endl;
+	this_thread::sleep_for(chrono::milliseconds(1000));
+	world->currentCharacter->useWeapon(*ennemy);
+	cout << "Ennemy's HP are now " << ennemy->hitPoints << "\n" << endl;
+}

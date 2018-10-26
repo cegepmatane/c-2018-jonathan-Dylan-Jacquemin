@@ -1,13 +1,5 @@
-/*
- * Priestess.cpp
- *
- *  Created on: 28 sept. 2018
- *      Author: DYLAN-MSI
- */
-
 #include "Priestess.h"
-
-namespace std {
+#include "World.h"
 
 Priestess::Priestess() {
 	this->initProp();
@@ -94,4 +86,22 @@ string Priestess::exportDatas() {
 	return xml.str();
 }
 
-} /* namespace std */
+void Priestess::pressA(World* world) {
+	cout << "- " << this->getName() << " : I won't let you down, my friends !" << endl;
+	this_thread::sleep_for(chrono::milliseconds(1000));
+
+	for (Character* character : world->charactersList) {
+		this->useWeapon(*character);
+	}
+	// TODO : define a baseHP attribute in std::Character
+	cout << "You healed all your team of " << 0 - this->weapon.damageAmmount << "HP\n" << endl;
+}
+
+void Priestess::pressE(World* world) {
+	cout << "- " << world->currentCharacter->getName() << " : Come here, I will heal you~" << endl;
+	this_thread::sleep_for(chrono::milliseconds(1000));
+
+	world->currentCharacter->useWeapon(*world->charactersList.at(world->gameTurn % 2));
+	// TODO : define a baseHP attribute in std::Character
+	cout << "You healed an ally for " << 0 - world->currentCharacter->weapon.damageAmmount << "HP\n" << endl;
+}

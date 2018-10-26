@@ -1,13 +1,4 @@
-/*
- * Bow.cpp
- *
- *  Created on: 28 sept. 2018
- *      Author: DYLAN-MSI
- */
-
 #include "Bow.h"
-
-namespace std {
 
 Bow::Bow() {
 	this->initProp();
@@ -71,5 +62,3 @@ int Bow::operator+(Weapon & other)
 	damageCombined = this->damageAmmount + other.damageAmmount;
 	return damageCombined;
 }
-
-} /* namespace std */

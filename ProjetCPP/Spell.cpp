@@ -1,13 +1,4 @@
-/*
- * Spell.cpp
- *
- *  Created on: 28 sept. 2018
- *      Author: DYLAN-MSI
- */
-
 #include "Spell.h"
-
-namespace std {
 
 Spell::Spell() {
 	this->initProp();
@@ -72,5 +63,3 @@ int Spell::operator+(Weapon & other)
 	damageCombined = this->damageAmmount + other.damageAmmount;
 	return damageCombined;
 }
-
-} /* namespace std */

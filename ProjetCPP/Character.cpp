@@ -1,13 +1,5 @@
-/*
- * Character.cpp
- *
- *  Created on: 28 sept. 2018
- *      Author: DYLAN-MSI
- */
-
 #include "Character.h"
-
-namespace std {
+#include "World.h"
 
 Character::Character() {}
 
@@ -29,4 +21,6 @@ void Character::dealDamage(Character& character, int damageAmmount) {}
 
 string Character::exportDatas() {return "";}
 
-} /* namespace std */
+void Character::pressA(World* world) {}
+
+void Character::pressE(World* world) {}

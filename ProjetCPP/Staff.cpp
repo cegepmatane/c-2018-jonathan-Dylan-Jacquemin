@@ -1,13 +1,4 @@
-/*
- * Staff.cpp
- *
- *  Created on: 28 sept. 2018
- *      Author: DYLAN-MSI
- */
-
 #include "Staff.h"
-
-namespace std {
 
 Staff::Staff() {
 	this->initProp();
@@ -72,5 +63,3 @@ int Staff::operator+(Weapon & other)
 	damageCombined = this->damageAmmount + other.damageAmmount;
 	return damageCombined;
 }
-
-} /* namespace std */

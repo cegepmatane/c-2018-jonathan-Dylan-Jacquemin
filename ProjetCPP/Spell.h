@@ -1,29 +1,18 @@
-/*
- * Spell.h
- *
- *  Created on: 28 sept. 2018
- *      Author: DYLAN-MSI
- */
-
-#ifndef SPELL_H_
-#define SPELL_H_
+#pragma once
 
 #include "Weapon.h"
 
-namespace std {
+using namespace std;
 
 class Spell : public Weapon {
 public:
 	Spell();
 	Spell(int);
 	virtual ~Spell();
+
 	// methods
 	void initProp();
 	void giveWeaponSpecifications();
-	string exportDatas();
+	std::string exportDatas();
 	int operator+(Weapon&);
 };
-
-} /* namespace std */
-
-#endif /* SPELL_H_ */

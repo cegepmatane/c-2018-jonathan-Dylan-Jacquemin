@@ -1,13 +1,5 @@
-/*
- * Mage.cpp
- *
- *  Created on: 28 sept. 2018
- *      Author: DYLAN-MSI
- */
-
 #include "Mage.h"
-
-namespace std {
+#include "World.h"
 
 Mage::Mage() {
 	this->initProp();
@@ -94,4 +86,25 @@ string Mage::exportDatas() {
 	return xml.str();
 }
 
-} /* namespace std */
+void Mage::pressA(World* world) {
+	cout << "- " << this->getName() << " : See if you can handle this !" << endl;
+	cout << "You are casting a HUGE fireball !" << endl;
+	this_thread::sleep_for(chrono::milliseconds(1500));
+
+	Character* ennemy = world->charactersList.at(3);
+	Weapon* spell = world->weaponsList.at(1);
+
+	// Weapon addition :
+	this->dealDamage(*ennemy, *spell + *spell);
+	cout << "Ennemy's HP are now " << ennemy->hitPoints << "\n" << endl;
+}
+
+void Mage::pressE(World* world) {
+	Character* ennemy = world->charactersList.at(3);
+
+	cout << "*fire*" << endl;
+	this_thread::sleep_for(chrono::milliseconds(1500));
+	cout << "*blast*" << endl;
+	world->currentCharacter->useWeapon(*ennemy);
+	cout << "Ennemy's HP are now " << ennemy->hitPoints << "\n" << endl;
+}
