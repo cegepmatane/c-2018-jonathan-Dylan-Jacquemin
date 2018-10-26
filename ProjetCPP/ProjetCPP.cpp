@@ -37,16 +37,19 @@ int main() {
 		cout << "Load failed for grass.jpg" << endl;
 		system("pause");
 	}
-
 	sf::Texture* characterTexture = new sf::Texture();
 	if (!characterTexture->loadFromFile("data/ressources/textures/" + world->currentCharacter->getPath())) {
 		cout << "Load failed for character texture" << endl;
 		system("pause");
 	}
-
 	sf::Texture* weaponTexture = new sf::Texture();
 	if (!weaponTexture->loadFromFile("data/ressources/textures/" + world->currentCharacter->weapon->getPath())) {
 		cout << "Load failed for the weapon texture" << endl;
+		system("pause");
+	}
+	sf::Texture* banditTexture = new sf::Texture();
+	if (!banditTexture->loadFromFile("data/ressources/textures/bandit.png")) {
+		cout << "Load failed for bandit.png" << endl;
 		system("pause");
 	}
 
@@ -54,6 +57,7 @@ int main() {
 	sf::Sprite* grassSprite = new sf::Sprite(*grassTexture);
 	sf::Sprite* characterSprite = new sf::Sprite(*characterTexture);
 	sf::Sprite* weaponSprite = new sf::Sprite(*weaponTexture);
+	sf::Sprite* banditSprite = new sf::Sprite(*banditTexture);
 
 	// Texture rescaling
 	sf::Vector2f targetSize(100.0f, 100.0f);
@@ -67,6 +71,9 @@ int main() {
 	characterSprite->setScale(0.143f, 0.143f);
 
 	weaponSprite->setScale(0.125f, 0.125f);
+
+	banditSprite->setScale(0.143f, 0.143f);
+	banditSprite->setPosition(200.0f, 400.0f);
 
 	// Vectors used for moving textures sprites
 	sf::Vector2f* upMoveVector2f = new sf::Vector2f(0, -100);
@@ -235,6 +242,7 @@ int main() {
 		window.draw(*characterSprite);
 		weaponSprite->setPosition(1500.0f, 800.0f);
 		window.draw(*weaponSprite);
+		window.draw(*banditSprite);
 
 		// Display current turn number
 		sf::Text* turn = new sf::Text("Turn : " + to_string(world->gameTurn), *font, 20);

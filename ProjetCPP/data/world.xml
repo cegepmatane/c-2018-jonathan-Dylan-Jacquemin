@@ -3,7 +3,7 @@
 <Archer><hitPoints>16</hitPoints></Archer>
 <Mage><hitPoints>12</hitPoints></Mage>
 <Priestess><hitPoints>20</hitPoints></Priestess>
-<Mage><hitPoints>100</hitPoints></Mage>
+<Mage><hitPoints>93</hitPoints></Mage>
 </Character>
 <Spell>
 <Spell><damageAmmount>4</damageAmmount></Spell>
