@@ -20,66 +20,49 @@ using namespace std;
 int main() {
 	fs::create_directory("./data");
 	
-	// Game Loop
 	cout << "To quit the game, press on ESC key. \n" << endl;
 	cout << "|====| Welcome to the battleground ! |====|" << endl;
 
+	// SFML components
+	sf::RenderWindow window(sf::VideoMode(1600, 1000), "C++ Project");
 
+	sf::Font* font = new sf::Font();
+	font->loadFromFile("./data/ressources/fonts/Roboto-Regular.ttf");
 
-
-
-	// SFML
-	sf::RenderWindow window(sf::VideoMode(1600, 900), "Sprite drawing!");
-
-	sf::Texture texture;
-
-	sf::Font* police = new sf::Font();
-	police->loadFromFile("./data/Roboto-Regular.ttf");
-
-	int i = 0;
-
-	if (!texture.loadFromFile("data/grass-sd.png")) {
-		cout << "Load failed" << endl;
-
+	// SFML Textures
+	sf::Texture* grassTexture = new sf::Texture();
+	if (!grassTexture->loadFromFile("data/ressources/textures/grass.jpg")) {
+		cout << "Load failed for grass.jpg " << endl;
 		system("pause");
 	}
 
-	sf::Sprite sprite;
-	sprite.setTexture(texture);
-
-	while (window.isOpen())
-	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
-
-		i += 1;
-
-		window.clear();
-
-		window.draw(sprite);
-
-		sf::Vector2f* vecteur = new sf::Vector2f(1, 1);
-		sprite.move(*vecteur);
-
-		sf::Text* texteAAfficher = new sf::Text("ALED" + to_string(i), *police, 50);
-
-		window.draw(*texteAAfficher);
-		texteAAfficher->move(2, 2);
-
-		window.display();
+	sf::Texture* characterTexture = new sf::Texture();
+	if (!characterTexture->loadFromFile("data/ressources/textures/archer.png")) {
+		cout << "Load failed for grass.jpg " << endl;
+		system("pause");
 	}
 
+	sf::Texture* weaponTexture;
 
+	// SFML Sprites
+	sf::Sprite* grassSprite = new sf::Sprite(*grassTexture);
+	sf::Sprite* characterSprite = new sf::Sprite(*characterTexture);
 
+	// 100px x 100px texture rescaling
+	sf::Vector2f targetSize(100.0f, 100.0f);
 
+	grassSprite->setScale(
+		targetSize.x / grassSprite->getLocalBounds().width,
+		targetSize.y / grassSprite->getLocalBounds().height
+	);
 
+	characterSprite->setScale(0.1f, 0.1f);
 
-
-
+	// Vectors used for moving textures sprites
+	sf::Vector2f* upMoveVector2f = new sf::Vector2f(0, -100);
+	sf::Vector2f* leftMoveVector2f = new sf::Vector2f(-100, 0);
+	sf::Vector2f* downMoveVector2f = new sf::Vector2f(0, 100);
+	sf::Vector2f* rightMoveVector2f = new sf::Vector2f(100, 0);
 
 	World* world = new World();
 
@@ -92,8 +75,19 @@ int main() {
 	Character* ennemy = world->charactersList.at(3);
 
 
-	while (gameIsRunning) {
+	while (gameIsRunning && window.isOpen()) {
 		this_thread::sleep_for(chrono::milliseconds(1000 / 120)); // 120 fps
+
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+			window.close();
+
 
 		if (waitCount != 0) {
 			if (_kbhit()) {
@@ -109,21 +103,25 @@ int main() {
 				// UP
 				case 122:
 					cout << "move up" << endl;
+					characterSprite->move(*upMoveVector2f);
 					waitCount = 0;
 					break;
 				// LEFT
 				case 113:
 					cout << "move left" << endl;
+					characterSprite->move(*leftMoveVector2f);
 					waitCount = 0;
 					break;
 				// DOWN
 				case 115:
 					cout << "move down" << endl;
+					characterSprite->move(*downMoveVector2f);
 					waitCount = 0;
 					break;
 				// RIGHT
 				case 100:
 					cout << "move right" << endl;
+					characterSprite->move(*rightMoveVector2f);
 					waitCount = 0;
 					break;
 
@@ -198,6 +196,29 @@ int main() {
 			cout << "Turn " << world->gameTurn << ". You now have 15sec to play your turn.\n" << endl;
 			// TODO make the ennemy attack
 		}
+
+		window.clear();
+
+		for (int i = 0; i < 16; i++)
+		{
+			for (int j = 0; j < 10; j++)
+			{
+				grassSprite->setPosition(i*100.0f, j*100.0f);
+				window.draw(*grassSprite);
+			}
+		}
+
+		sf::Text* turn = new sf::Text("Turn : " + to_string(world->gameTurn), *font, 20);
+		turn->setPosition(1400.0f, 15.0f);
+		window.draw(*turn);
+
+		sf::Text* time = new sf::Text("Time : " + to_string(currentPlayingTime), *font, 20);
+		time->setPosition(1500.0f, 15.0f);
+		window.draw(*time);
+
+		window.draw(*characterSprite);
+
+		window.display();
 
 		if (currentPlayingTime != frames / 120) {
 			currentPlayingTime = frames / 120;
