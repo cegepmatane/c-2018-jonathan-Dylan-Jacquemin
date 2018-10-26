@@ -12,15 +12,15 @@ World::World() {
 	weaponsList.push_back(staff);
 
 	// Character creation
-	Character* archer = new Archer(*bow);
-	Character* mage = new Mage(*spell);
-	Character* priestess = new Priestess(*staff);
+	Character* archer = new Archer(bow);
+	Character* mage = new Mage(spell);
+	Character* priestess = new Priestess(staff);
 
 	charactersList.push_back(archer);
 	charactersList.push_back(mage);
 	charactersList.push_back(priestess);
 
-	Character* ennemy = new Mage(100, *spell);
+	Character* ennemy = new Mage(100, spell);
 	charactersList.push_back(ennemy);
 
 	this->gameTurn = 0;

@@ -5,9 +5,9 @@ Character::Character() {}
 
 Character::Character(int hitPoints) {}
 
-Character::Character(Weapon& weapon) {}
+Character::Character(Weapon* weapon) {}
 
-Character::Character(int, Weapon&){}
+Character::Character(int, Weapon*){}
 
 Character::~Character() {}
 
@@ -15,7 +15,7 @@ void Character::initProp() {}
 
 void Character::useWeapon(Character& character) {}
 
-void Character::changeWeapon(Weapon& weapon) {}
+void Character::changeWeapon(Weapon* weapon) {}
 
 void Character::dealDamage(Character& character, int damageAmmount) {}
 

@@ -10,12 +10,12 @@ Archer::Archer(int hitPoints) {
 	this->hitPoints = hitPoints;
 }
 
-Archer::Archer(Weapon& weapon) {
+Archer::Archer(Weapon* weapon) {
 	this->initProp();
 	this->weapon = weapon;
 }
 
-Archer::Archer(int hitPoints, Weapon& weapon) {
+Archer::Archer(int hitPoints, Weapon* weapon) {
 	this->hitPoints = hitPoints;
 	this->weapon = weapon;
 }
@@ -69,10 +69,10 @@ bool Archer::isDead() {
 }
 
 void Archer::useWeapon(Character& character) {
-	character.hitPoints = character.hitPoints - this->weapon.damageAmmount;
+	character.hitPoints = character.hitPoints - this->weapon->damageAmmount;
 }
 
-void Archer::changeWeapon(Weapon& weapon) {
+void Archer::changeWeapon(Weapon* weapon) {
 	this->weapon = weapon;
 }
 
@@ -93,10 +93,9 @@ void Archer::pressA(World* world) {
 	
 	Character* ennemy = world->charactersList.at(3);
 	Weapon* spell = world->weaponsList.at(1);
-	Weapon* bow = world->weaponsList.at(0);
 
 	// Weapon addition :
-	this->dealDamage(*ennemy, *spell + *bow);
+	this->dealDamage(*ennemy, *spell + *(this->weapon));
 	cout << "Ennemy's HP are now " << ennemy->hitPoints << "\n" << endl;
 }
 

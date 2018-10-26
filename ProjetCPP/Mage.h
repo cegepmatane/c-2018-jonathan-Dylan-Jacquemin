@@ -8,8 +8,8 @@ class Mage : public Character {
 	public:
 		Mage();
 		Mage(int);
-		Mage(Weapon&);
-		Mage(int, Weapon&);
+		Mage(Weapon*);
+		Mage(int, Weapon*);
 		virtual ~Mage();
 
 		// methods
@@ -17,7 +17,7 @@ class Mage : public Character {
 		std::string getName();
 		bool isDead();
 		void useWeapon(Character&);
-		void changeWeapon(Weapon&);
+		void changeWeapon(Weapon*);
 		void dealDamage(Character&, int);
 		std::string exportDatas();
 		void pressA(World*);

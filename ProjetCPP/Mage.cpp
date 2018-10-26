@@ -10,12 +10,12 @@ Mage::Mage(int hitPoints) {
 	this->hitPoints = hitPoints;
 }
 
-Mage::Mage(Weapon& weapon) {
+Mage::Mage(Weapon* weapon) {
 	this->initProp();
 	this->weapon = weapon;
 }
 
-Mage::Mage(int hitPoints, Weapon& weapon) {
+Mage::Mage(int hitPoints, Weapon* weapon) {
 	this->hitPoints = hitPoints;
 	this->weapon = weapon;
 }
@@ -69,10 +69,10 @@ bool Mage::isDead() {
 }
 
 void Mage::useWeapon(Character& character) {
-	character.hitPoints = character.hitPoints - this->weapon.damageAmmount;
+	character.hitPoints = character.hitPoints - this->weapon->damageAmmount;
 }
 
-void Mage::changeWeapon(Weapon& weapon) {
+void Mage::changeWeapon(Weapon* weapon) {
 	this->weapon = weapon;
 }
 
@@ -92,10 +92,9 @@ void Mage::pressA(World* world) {
 	this_thread::sleep_for(chrono::milliseconds(1500));
 
 	Character* ennemy = world->charactersList.at(3);
-	Weapon* spell = world->weaponsList.at(1);
 
 	// Weapon addition :
-	this->dealDamage(*ennemy, *spell + *spell);
+	this->dealDamage(*ennemy, *(this->weapon) + *(this->weapon));
 	cout << "Ennemy's HP are now " << ennemy->hitPoints << "\n" << endl;
 }
 

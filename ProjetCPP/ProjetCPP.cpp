@@ -142,7 +142,7 @@ int main() {
 				case 13:
 					cout << "|==| Interaction Menu |==|" << endl;
 					cout << "HP : " << world->currentCharacter->hitPoints << " | DMG : "
-						<< world->currentCharacter->weapon.damageAmmount << endl;
+						<< world->currentCharacter->weapon->damageAmmount << endl;
 					cout << "Press :" << endl;
 					cout << " - 'a' to unleash your ultimate" << endl;
 					cout << " - 'e' to do a simple attack" << endl;

@@ -10,12 +10,12 @@ Priestess::Priestess(int hitPoints) {
 	this->hitPoints = hitPoints;
 }
 
-Priestess::Priestess(Weapon& weapon) {
+Priestess::Priestess(Weapon* weapon) {
 	this->initProp();
 	this->weapon = weapon;
 }
 
-Priestess::Priestess(int hitPoints, Weapon& weapon) {
+Priestess::Priestess(int hitPoints, Weapon* weapon) {
 	this->hitPoints = hitPoints;
 	this->weapon = weapon;
 }
@@ -69,10 +69,10 @@ bool Priestess::isDead() {
 }
 
 void Priestess::useWeapon(Character& character) {
-	character.hitPoints = character.hitPoints - this->weapon.damageAmmount;
+	character.hitPoints = character.hitPoints - this->weapon->damageAmmount;
 }
 
-void Priestess::changeWeapon(Weapon& weapon) {
+void Priestess::changeWeapon(Weapon* weapon) {
 	this->weapon = weapon;
 }
 
@@ -94,7 +94,7 @@ void Priestess::pressA(World* world) {
 		this->useWeapon(*character);
 	}
 	// TODO : define a baseHP attribute in std::Character
-	cout << "You healed all your team of " << 0 - this->weapon.damageAmmount << "HP\n" << endl;
+	cout << "You healed all your team of " << 0 - this->weapon->damageAmmount << "HP\n" << endl;
 }
 
 void Priestess::pressE(World* world) {
@@ -103,5 +103,5 @@ void Priestess::pressE(World* world) {
 
 	world->currentCharacter->useWeapon(*world->charactersList.at(world->gameTurn % 2));
 	// TODO : define a baseHP attribute in std::Character
-	cout << "You healed an ally for " << 0 - world->currentCharacter->weapon.damageAmmount << "HP\n" << endl;
+	cout << "You healed an ally for " << 0 - world->currentCharacter->weapon->damageAmmount << "HP\n" << endl;
 }

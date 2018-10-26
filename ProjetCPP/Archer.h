@@ -8,8 +8,8 @@ class Archer : public Character {
 	public:
 		Archer();
 		Archer(int);
-		Archer(Weapon&);
-		Archer(int, Weapon&);
+		Archer(Weapon*);
+		Archer(int, Weapon*);
 		virtual ~Archer();
 
 		// methods
@@ -17,7 +17,7 @@ class Archer : public Character {
 		std::string getName();
 		bool isDead();
 		void useWeapon(Character&);
-		void changeWeapon(Weapon&);
+		void changeWeapon(Weapon*);
 		void dealDamage(Character&, int);
 		std::string exportDatas();
 		void pressA(World*);

@@ -19,14 +19,14 @@ class Character {
 	public:
 		Character();
 		Character(int);
-		Character(Weapon&);
-		Character(int, Weapon&);
+		Character(Weapon*);
+		Character(int, Weapon*);
 		virtual ~Character();
 
 		// attributes
 		int hitPoints;
 		std::string name;
-		Weapon weapon;
+		Weapon* weapon;
 
 		// methods
 		virtual void initProp();
@@ -37,7 +37,7 @@ class Character {
 			return true;
 		};
 		virtual void useWeapon(Character&);
-		virtual void changeWeapon(Weapon&);
+		virtual void changeWeapon(Weapon*);
 		virtual void dealDamage(Character&, int);
 		virtual std::string exportDatas();
 		virtual void pressA(World*);
