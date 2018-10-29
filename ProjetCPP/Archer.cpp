@@ -120,13 +120,13 @@ string Archer::getPath() {
 }
 
 void Archer::usePotion() {
-	if (this->numberMissingHP() >= (this->baseHitPoints/4)) {
+	if (this->numberMissingHP() >= (int)(this->baseHitPoints / 4)) {
 		cout << "The potion made you regain " << this->numberMissingHP() << "HPs" << endl;
 		this->hitPoints = this->baseHitPoints;
 	}
 	else {
-		cout << "The potion made you regain " << this->baseHitPoints / 4 << "HPs" << endl;
-		this->hitPoints += (this->baseHitPoints/4);
+		cout << "The potion made you regain " << (int)this->baseHitPoints / 4 << "HPs" << endl;
+		this->hitPoints += (int)(this->baseHitPoints / 4);
 	}
 }
 

@@ -70,6 +70,9 @@ bool Priestess::isDead() {
 }
 
 int Priestess::numberMissingHP() {
+	cout << "current " << this->hitPoints << endl;
+	cout << "base " << this->baseHitPoints << endl;
+	cout << "calc " << this->baseHitPoints - this->hitPoints << endl;
 	return this->baseHitPoints - this->hitPoints;
 }
 
@@ -116,13 +119,17 @@ string Priestess::getPath() {
 }
 
 void Priestess::usePotion() {
-	if (this->numberMissingHP() >= (this->baseHitPoints / 4)) {
+	if (this->numberMissingHP() >= (int)(this->baseHitPoints / 4)) {
+		cout << "baseHP / 4 in int format " << (int)(this->baseHitPoints / 4) << endl;
 		cout << "The potion made you regain " << this->numberMissingHP() << "HPs" << endl;
 		this->hitPoints = this->baseHitPoints;
+		cout << this->hitPoints << endl;
+		cout << this->baseHitPoints << endl;
 	}
 	else {
-		cout << "The potion made you regain " << this->baseHitPoints / 4 << "HPs" << endl;
-		this->hitPoints += this->baseHitPoints / 4;
+		cout << "baseHP / 4 in int format " << (int)(this->baseHitPoints / 4) << endl;
+		cout << "The potion made you regain " << (int)(this->baseHitPoints / 4) << "HPs" << endl;
+		this->hitPoints += (int)(this->baseHitPoints / 4);
 	}
 }
 
