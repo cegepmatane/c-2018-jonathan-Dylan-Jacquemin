@@ -16,6 +16,7 @@ class Archer : public Character {
 		void initProp();
 		std::string getName();
 		bool isDead();
+		int numberMissingHP();
 		void useWeapon(Character&);
 		void changeWeapon(Weapon*);
 		void dealDamage(Character&, int);

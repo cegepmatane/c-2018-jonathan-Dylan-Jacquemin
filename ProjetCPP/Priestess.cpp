@@ -54,6 +54,7 @@ void Priestess::initProp() {
 			endPosition = line.find(";", startPosition);
 			string value = line.substr(startPosition, endPosition - startPosition);
 			this->hitPoints = stoi(value);
+			this->baseHitPoints = stoi(value);
 			startPosition = endPosition + 1;
 		}
 		while((startPosition !=0) && (line.length() != startPosition));
@@ -66,6 +67,10 @@ string Priestess::getName() {
 
 bool Priestess::isDead() {
 	return this->hitPoints==0;
+}
+
+int Priestess::numberMissingHP() {
+	return this->baseHitPoints - this->hitPoints;
 }
 
 void Priestess::useWeapon(Character& character) {

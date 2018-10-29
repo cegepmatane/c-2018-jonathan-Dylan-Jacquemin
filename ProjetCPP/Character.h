@@ -25,6 +25,7 @@ class Character {
 
 		// attributes
 		int hitPoints;
+		int baseHitPoints;
 		std::string name;
 		Weapon* weapon;
 
@@ -35,6 +36,9 @@ class Character {
 		};
 		virtual bool isDead() {
 			return true;
+		};
+		virtual int numberMissingHP() {
+			return 0;
 		};
 		virtual void useWeapon(Character&);
 		virtual void changeWeapon(Weapon*);

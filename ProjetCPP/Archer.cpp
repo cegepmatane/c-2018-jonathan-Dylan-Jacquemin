@@ -54,6 +54,7 @@ void Archer::initProp() {
 			endPosition = line.find(";", startPosition);
 			string value = line.substr(startPosition, endPosition - startPosition);
 			this->hitPoints = stoi(value);
+			this->baseHitPoints = stoi(value);
 			startPosition = endPosition + 1;
 		}
 		while((startPosition !=0) && (line.length() != startPosition));
@@ -66,6 +67,10 @@ string Archer::getName() {
 
 bool Archer::isDead() {
 	return this->hitPoints==0;
+}
+
+int Archer::numberMissingHP() {
+	return this->baseHitPoints - this->hitPoints;
 }
 
 void Archer::useWeapon(Character& character) {

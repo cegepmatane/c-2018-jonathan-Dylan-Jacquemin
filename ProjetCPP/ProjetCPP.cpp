@@ -208,7 +208,6 @@ int main() {
 						isPlayingAction = false;
 						waitCount = 0;
 						break;
-
 					}
 				}
 			}
