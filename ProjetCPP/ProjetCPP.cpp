@@ -219,11 +219,12 @@ int main() {
 		}
 		else {
 			// NEW TURN
+			ennemy->useWeapon(*(world->currentCharacter));
+			cout << "You take " << ennemy->weapon->damageAmmount << "DMG." << endl;
 			world->gameTurn++;
 			waitCount = 15;
 			isPlayingAction = false;
 			cout << "Turn " << world->gameTurn << ". You now have 15sec to play your turn.\n" << endl;
-			// TODO make the ennemy attack
 		}
 
 		window.clear();
