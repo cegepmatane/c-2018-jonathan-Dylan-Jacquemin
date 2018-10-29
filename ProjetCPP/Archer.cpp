@@ -118,3 +118,25 @@ void Archer::pressE(World* world) {
 string Archer::getPath() {
 	return "archer.png";
 }
+
+void Archer::usePotion() {
+	if (this->numberMissingHP() >= (this->baseHitPoints/4)) {
+		cout << "The potion made you regain " << this->numberMissingHP() << "HPs" << endl;
+		this->hitPoints = this->baseHitPoints;
+	}
+	else {
+		cout << "The potion made you regain " << this->baseHitPoints / 4 << "HPs" << endl;
+		this->hitPoints += (this->baseHitPoints/4);
+	}
+}
+
+void Archer::getHealed(int healAmmount) {
+	if (this->numberMissingHP() >= healAmmount) {
+		cout << this->name << " has been healed of " << this->numberMissingHP() << "HPs." << endl;
+		this->hitPoints = this->baseHitPoints;
+	}
+	else {
+		cout << this->name << " has been healed of " << healAmmount << "HPs" << endl;
+		this->hitPoints += healAmmount;
+	}
+}

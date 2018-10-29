@@ -26,3 +26,7 @@ void Character::pressA(World* world) {}
 void Character::pressE(World* world) {}
 
 string Character::getPath() { return ""; }
+
+void Character::usePotion() {}
+
+void Character::getHealed(int) {}

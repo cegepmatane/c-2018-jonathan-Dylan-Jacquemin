@@ -202,9 +202,8 @@ int main() {
 					// 'P' then 'p'
 					case 80:
 					case 112:
-						// TODO : define a baseHP attribute and a method to usePotion in std::Character
-						world->currentCharacter->hitPoints = world->currentCharacter->hitPoints + 5;
-						cout << "You used a potion. You now have " << world->currentCharacter->hitPoints << "HP" << endl;
+						world->currentCharacter->usePotion();
+						cout << "You now have " << world->currentCharacter->hitPoints << "HP" << endl;
 						isPlayingAction = false;
 						waitCount = 0;
 						break;
@@ -218,8 +217,10 @@ int main() {
 		}
 		else {
 			// NEW TURN
-			ennemy->useWeapon(*(world->currentCharacter));
-			cout << "You take " << ennemy->weapon->damageAmmount << "DMG." << endl;
+			if (world->gameTurn != 0) {
+				ennemy->useWeapon(*(world->currentCharacter));
+				cout << "You take " << ennemy->weapon->damageAmmount << "DMG." << endl;
+			}
 			world->gameTurn++;
 			waitCount = 15;
 			isPlayingAction = false;

@@ -47,4 +47,6 @@ class Character {
 		virtual void pressA(World*);
 		virtual void pressE(World*);
 		virtual std::string getPath();
+		virtual void usePotion();
+		virtual void getHealed(int);
 };

@@ -1,9 +1,9 @@
 <World>
 <Character>
-<Archer><hitPoints>3</hitPoints></Archer>
-<Mage><hitPoints>12</hitPoints></Mage>
-<Priestess><hitPoints>20</hitPoints></Priestess>
-<Mage><hitPoints>59</hitPoints></Mage>
+<Archer><hitPoints>72</hitPoints></Archer>
+<Mage><hitPoints>68</hitPoints></Mage>
+<Priestess><hitPoints>56</hitPoints></Priestess>
+<Mage><hitPoints>153</hitPoints></Mage>
 </Character>
 <Spell>
 <Spell><damageAmmount>4</damageAmmount></Spell>

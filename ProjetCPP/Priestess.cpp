@@ -97,20 +97,42 @@ void Priestess::pressA(World* world) {
 
 	for (Character* character : world->charactersList) {
 		this->useWeapon(*character);
+		character->getHealed(-(this->weapon->damageAmmount));
+		cout << "ALED" << -this->weapon->damageAmmount << endl;
 	}
-	// TODO : define a baseHP attribute in std::Character
-	cout << "You healed all your team of " << 0 - this->weapon->damageAmmount << "HP\n" << endl;
+	cout << "You healed all your team." << endl;
 }
 
 void Priestess::pressE(World* world) {
 	cout << "- " << world->currentCharacter->getName() << " : Come here, I will heal you~" << endl;
 	this_thread::sleep_for(chrono::milliseconds(1000));
 
-	world->currentCharacter->useWeapon(*world->charactersList.at(world->gameTurn % 2));
-	// TODO : define a baseHP attribute in std::Character
-	cout << "You healed an ally for " << 0 - world->currentCharacter->weapon->damageAmmount << "HP\n" << endl;
+	world->charactersList.at(world->gameTurn % 2)->getHealed(-(this->weapon->damageAmmount));
+	cout << "You healed an ally." << endl;
 }
 
 string Priestess::getPath() {
 	return "priestess.png";
+}
+
+void Priestess::usePotion() {
+	if (this->numberMissingHP() >= (this->baseHitPoints / 4)) {
+		cout << "The potion made you regain " << this->numberMissingHP() << "HPs" << endl;
+		this->hitPoints = this->baseHitPoints;
+	}
+	else {
+		cout << "The potion made you regain " << this->baseHitPoints / 4 << "HPs" << endl;
+		this->hitPoints += this->baseHitPoints / 4;
+	}
+}
+
+void Priestess::getHealed(int healAmmount) {
+	if (this->numberMissingHP() >= healAmmount) {
+		cout << this->name << " has been healed of " << this->numberMissingHP() << "HPs." << endl;
+		this->hitPoints = this->baseHitPoints;
+	}
+	else {
+		cout << this->name << " has been healed of " << healAmmount << "HPs" << endl;
+		this->hitPoints += healAmmount;
+	}
 }

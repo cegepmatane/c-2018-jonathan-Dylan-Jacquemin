@@ -24,4 +24,6 @@ class Mage : public Character {
 		void pressA(World*);
 		void pressE(World*);
 		std::string getPath();
+		void usePotion();
+		void getHealed(int);
 };
