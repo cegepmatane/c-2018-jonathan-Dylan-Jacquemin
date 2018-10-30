@@ -1,8 +1,8 @@
 <World>
 <Character>
-<Archer><hitPoints>12</hitPoints></Archer>
-<Mage><hitPoints>8</hitPoints></Mage>
-<Priestess><hitPoints>16</hitPoints></Priestess>
+<Archer><hitPoints>16</hitPoints></Archer>
+<Mage><hitPoints>12</hitPoints></Mage>
+<Priestess><hitPoints>20</hitPoints></Priestess>
 </Character>
 <Spell>
 <Spell><damageAmmount>4</damageAmmount></Spell>

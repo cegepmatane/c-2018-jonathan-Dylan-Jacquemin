@@ -255,13 +255,15 @@ int main() {
 		time->setPosition(1500.0f, 15.0f);
 		window.draw(*time);
 
-		// Display current hitpoints
-		sf::Text* myHitPoints = new sf::Text("HP : " + to_string(world->currentCharacter->hitPoints), *font, 20);
-		myHitPoints->setPosition(1300.0f, 15.0f);
+		// Display player hitpoints
+		std::string hitPointsBarText = "HP : " + to_string(world->currentCharacter->hitPoints) + "/" + to_string(world->currentCharacter->baseHitPoints);
+		sf::Text* myHitPoints = new sf::Text(hitPointsBarText, *font, 20);
+		myHitPoints->setPosition(1250.0f, 15.0f);
 		window.draw(*myHitPoints);
 
 		// Display ennemy hitpoints
-		sf::Text* ennemyHitPoints = new sf::Text("Ennemy HP : " + to_string(ennemy->hitPoints), *font, 20);
+		std::string hitPointsBarTextEnnemy = "Ennemy HP : " + to_string(ennemy->hitPoints) + "/" + to_string(ennemy->baseHitPoints);
+		sf::Text* ennemyHitPoints = new sf::Text(hitPointsBarTextEnnemy, *font, 20);
 		ennemyHitPoints->setPosition(50.0f, 15.0f);
 		window.draw(*ennemyHitPoints);
 
