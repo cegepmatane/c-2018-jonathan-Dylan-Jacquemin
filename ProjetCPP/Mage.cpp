@@ -96,7 +96,7 @@ void Mage::pressA(World* world) {
 	cout << "You are casting a HUGE fireball !" << endl;
 	this_thread::sleep_for(chrono::milliseconds(1500));
 
-	Character* ennemy = world->charactersList.at(3);
+	Character* ennemy = world->ennemy;
 
 	// Weapon addition :
 	this->dealDamage(*ennemy, *(this->weapon) + *(this->weapon));
@@ -104,7 +104,7 @@ void Mage::pressA(World* world) {
 }
 
 void Mage::pressE(World* world) {
-	Character* ennemy = world->charactersList.at(3);
+	Character* ennemy = world->ennemy;
 
 	cout << "*fire*" << endl;
 	this_thread::sleep_for(chrono::milliseconds(1500));
@@ -118,17 +118,24 @@ string Mage::getPath() {
 }
 
 void Mage::usePotion() {
+	if (numberMissingHP() == 0) {
+		cout << "You can't use a potion when hitpoints are at maximum" << endl;
+		return;
+	}
 	if (this->numberMissingHP() >= (int)(this->baseHitPoints / 4)) {
 		cout << "The potion made you regain " << this->numberMissingHP() << "HPs" << endl;
 		this->hitPoints = this->baseHitPoints;
 	}
 	else {
-		cout << "The potion made you regain " << (int)this->baseHitPoints / 4 << "HPs" << endl;
-		this->hitPoints += (int)this->baseHitPoints / 4;
+		cout << "The potion made you regain " << (int)(this->baseHitPoints / 4) << "HPs" << endl;
+		this->hitPoints += (int)(this->baseHitPoints / 4);
 	}
 }
 
 void Mage::getHealed(int healAmmount) {
+	if (numberMissingHP() == 0) {
+		return;
+	}
 	if (this->numberMissingHP() >= healAmmount) {
 		cout << this->name << " has been healed of " << this->numberMissingHP() << "HPs." << endl;
 		this->hitPoints = this->baseHitPoints;

@@ -23,6 +23,7 @@ class World {
 		std::vector<Weapon*> weaponsList;
 		std::vector<Character*> charactersList;
 		Character* currentCharacter;
+		Character* ennemy;
 		int playingCharacterNumber;
 		int gameTurn;
 		//methods

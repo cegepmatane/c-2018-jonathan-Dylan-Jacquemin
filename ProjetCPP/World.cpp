@@ -20,8 +20,7 @@ World::World() {
 	charactersList.push_back(mage);
 	charactersList.push_back(priestess);
 
-	Character* ennemy = new Mage(100, spell);
-	charactersList.push_back(ennemy);
+	this->ennemy = new Mage(100, spell);
 
 	this->gameTurn = 0;
 

@@ -70,9 +70,6 @@ bool Priestess::isDead() {
 }
 
 int Priestess::numberMissingHP() {
-	cout << "current " << this->hitPoints << endl;
-	cout << "base " << this->baseHitPoints << endl;
-	cout << "calc " << this->baseHitPoints - this->hitPoints << endl;
 	return this->baseHitPoints - this->hitPoints;
 }
 
@@ -99,11 +96,8 @@ void Priestess::pressA(World* world) {
 	this_thread::sleep_for(chrono::milliseconds(1000));
 
 	for (Character* character : world->charactersList) {
-		this->useWeapon(*character);
 		character->getHealed(-(this->weapon->damageAmmount));
-		cout << "ALED" << -this->weapon->damageAmmount << endl;
 	}
-	cout << "You healed all your team." << endl;
 }
 
 void Priestess::pressE(World* world) {
@@ -119,21 +113,24 @@ string Priestess::getPath() {
 }
 
 void Priestess::usePotion() {
+	if (numberMissingHP() == 0) {
+		cout << "You can't use a potion when hitpoints are at maximum" << endl;
+		return;
+	}
 	if (this->numberMissingHP() >= (int)(this->baseHitPoints / 4)) {
-		cout << "baseHP / 4 in int format " << (int)(this->baseHitPoints / 4) << endl;
 		cout << "The potion made you regain " << this->numberMissingHP() << "HPs" << endl;
 		this->hitPoints = this->baseHitPoints;
-		cout << this->hitPoints << endl;
-		cout << this->baseHitPoints << endl;
 	}
 	else {
-		cout << "baseHP / 4 in int format " << (int)(this->baseHitPoints / 4) << endl;
 		cout << "The potion made you regain " << (int)(this->baseHitPoints / 4) << "HPs" << endl;
 		this->hitPoints += (int)(this->baseHitPoints / 4);
 	}
 }
 
 void Priestess::getHealed(int healAmmount) {
+	if (numberMissingHP() == 0) {
+		return;
+	}
 	if (this->numberMissingHP() >= healAmmount) {
 		cout << this->name << " has been healed of " << this->numberMissingHP() << "HPs." << endl;
 		this->hitPoints = this->baseHitPoints;

@@ -96,7 +96,7 @@ void Archer::pressA(World* world) {
 	cout << "You shoot a fire arrow thanks to the help of the mage." << endl;
 	this_thread::sleep_for(chrono::milliseconds(1500));
 	
-	Character* ennemy = world->charactersList.at(3);
+	Character* ennemy = world->ennemy;
 	Weapon* spell = world->weaponsList.at(1);
 
 	// Weapon addition :
@@ -105,7 +105,7 @@ void Archer::pressA(World* world) {
 }
 
 void Archer::pressE(World* world) {
-	Character* ennemy = world->charactersList.at(3);
+	Character* ennemy = world->ennemy;
 
 	cout << "*bow bending*" << endl;
 	this_thread::sleep_for(chrono::milliseconds(1500));
@@ -120,17 +120,24 @@ string Archer::getPath() {
 }
 
 void Archer::usePotion() {
+	if (numberMissingHP() == 0) {
+		cout << "You can't use a potion when hitpoints are at maximum" << endl;
+		return;
+	}
 	if (this->numberMissingHP() >= (int)(this->baseHitPoints / 4)) {
 		cout << "The potion made you regain " << this->numberMissingHP() << "HPs" << endl;
 		this->hitPoints = this->baseHitPoints;
 	}
 	else {
-		cout << "The potion made you regain " << (int)this->baseHitPoints / 4 << "HPs" << endl;
+		cout << "The potion made you regain " << (int)(this->baseHitPoints / 4) << "HPs" << endl;
 		this->hitPoints += (int)(this->baseHitPoints / 4);
 	}
 }
 
 void Archer::getHealed(int healAmmount) {
+	if (numberMissingHP() == 0) {
+		return;
+	}
 	if (this->numberMissingHP() >= healAmmount) {
 		cout << this->name << " has been healed of " << this->numberMissingHP() << "HPs." << endl;
 		this->hitPoints = this->baseHitPoints;

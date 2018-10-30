@@ -87,7 +87,7 @@ int main() {
 	int currentPlayingTime = 0;
 	int waitCount = 0;
 	bool isPlayingAction = false;
-	Character* ennemy = world->charactersList.at(3);
+	Character* ennemy = world->ennemy;
 
 
 	while (gameIsRunning && window.isOpen()) {
