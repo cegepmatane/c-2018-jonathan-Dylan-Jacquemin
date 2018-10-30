@@ -117,7 +117,7 @@ void Priestess::usePotion() {
 		cout << "You can't use a potion when hitpoints are at maximum" << endl;
 		return;
 	}
-	if (this->numberMissingHP() >= (int)(this->baseHitPoints / 4)) {
+	if (this->numberMissingHP() <= (int)(this->baseHitPoints / 4)) {
 		cout << "The potion made you regain " << this->numberMissingHP() << "HPs" << endl;
 		this->hitPoints = this->baseHitPoints;
 	}
