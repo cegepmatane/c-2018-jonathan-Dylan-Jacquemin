@@ -138,7 +138,7 @@ void Archer::getHealed(int healAmmount) {
 	if (numberMissingHP() == 0) {
 		return;
 	}
-	if (this->numberMissingHP() >= healAmmount) {
+	if (this->numberMissingHP() <= healAmmount) {
 		cout << this->name << " has been healed of " << this->numberMissingHP() << "HPs." << endl;
 		this->hitPoints = this->baseHitPoints;
 	}

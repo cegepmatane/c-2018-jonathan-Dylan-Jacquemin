@@ -70,6 +70,10 @@ bool Mage::isDead() {
 }
 
 int Mage::numberMissingHP() {
+	cout << "base : " << this->baseHitPoints <<endl;
+	cout << "current : " << this->hitPoints <<endl;
+	cout << "missing : " << this->baseHitPoints - this->hitPoints <<endl;
+
 	return this->baseHitPoints - this->hitPoints;
 }
 
@@ -136,7 +140,7 @@ void Mage::getHealed(int healAmmount) {
 	if (numberMissingHP() == 0) {
 		return;
 	}
-	if (this->numberMissingHP() >= healAmmount) {
+	if (this->numberMissingHP() <= healAmmount) {
 		cout << this->name << " has been healed of " << this->numberMissingHP() << "HPs." << endl;
 		this->hitPoints = this->baseHitPoints;
 	}
