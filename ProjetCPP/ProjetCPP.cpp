@@ -246,21 +246,26 @@ int main() {
 		window.draw(*weaponSprite);
 		window.draw(*banditSprite);
 
-		// Display current turn number
-		sf::Text* turn = new sf::Text("Turn : " + to_string(world->gameTurn), *font, 20);
-		turn->setPosition(1400.0f, 15.0f);
-		window.draw(*turn);
-
-		// Display timer
-		sf::Text* time = new sf::Text("Time : " + to_string(currentPlayingTime), *font, 20);
-		time->setPosition(1500.0f, 15.0f);
-		window.draw(*time);
-
 		// Display player hitpoints
 		std::string hitPointsBarText = "HP : " + to_string(world->currentCharacter->hitPoints) + "/" + to_string(world->currentCharacter->baseHitPoints);
 		sf::Text* myHitPoints = new sf::Text(hitPointsBarText, *font, 20);
-		myHitPoints->setPosition(1250.0f, 15.0f);
+		myHitPoints->setPosition(1000.0f, 15.0f);
 		window.draw(*myHitPoints);
+
+		// Display current turn number
+		sf::Text* turn = new sf::Text("Turn : " + to_string(world->gameTurn), *font, 20);
+		turn->setPosition(1150.0f, 15.0f);
+		window.draw(*turn);
+
+		// Display remaining time for the current turn
+		sf::Text* remainingTime = new sf::Text("Remaining : " + to_string(waitCount) + "s.", *font, 20);
+		remainingTime->setPosition(1275.0f, 15.0f);
+		window.draw(*remainingTime);
+
+		// Display timer
+		sf::Text* time = new sf::Text("Total : " + to_string(currentPlayingTime) + "s.", *font, 20);
+		time->setPosition(1450.0f, 15.0f);
+		window.draw(*time);
 
 		// Display ennemy hitpoints
 		std::string hitPointsBarTextEnnemy = to_string(ennemy->hitPoints) + "/" + to_string(ennemy->baseHitPoints);
