@@ -136,6 +136,7 @@ void Archer::usePotion() {
 
 void Archer::getHealed(int healAmmount) {
 	if (numberMissingHP() == 0) {
+		cout << this->name << " is full life and cannot be healed." << endl;
 		return;
 	}
 	if (this->numberMissingHP() <= healAmmount) {

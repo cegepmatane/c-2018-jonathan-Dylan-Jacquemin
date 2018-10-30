@@ -8,6 +8,7 @@ Mage::Mage() {
 Mage::Mage(int hitPoints) {
 	this->initProp();
 	this->hitPoints = hitPoints;
+	this->baseHitPoints = hitPoints;
 }
 
 Mage::Mage(Weapon* weapon) {
@@ -17,6 +18,7 @@ Mage::Mage(Weapon* weapon) {
 
 Mage::Mage(int hitPoints, Weapon* weapon) {
 	this->hitPoints = hitPoints;
+	this->baseHitPoints = hitPoints;
 	this->weapon = weapon;
 }
 
@@ -134,6 +136,7 @@ void Mage::usePotion() {
 
 void Mage::getHealed(int healAmmount) {
 	if (numberMissingHP() == 0) {
+		cout << this->name << " is full life and cannot be healed." << endl;
 		return;
 	}
 	if (this->numberMissingHP() <= healAmmount) {

@@ -105,7 +105,6 @@ void Priestess::pressE(World* world) {
 	this_thread::sleep_for(chrono::milliseconds(1000));
 
 	world->charactersList.at(world->gameTurn % 2)->getHealed(-(this->weapon->damageAmmount));
-	cout << "You healed an ally." << endl;
 }
 
 string Priestess::getPath() {
@@ -129,6 +128,7 @@ void Priestess::usePotion() {
 
 void Priestess::getHealed(int healAmmount) {
 	if (numberMissingHP() == 0) {
+		cout << this->name << " is full life and cannot be healed." << endl;
 		return;
 	}
 	if (this->numberMissingHP() <= healAmmount) {

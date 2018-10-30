@@ -28,6 +28,7 @@ int main() {
 	// SFML components
 	sf::RenderWindow window(sf::VideoMode(1600, 900), "C++ Project");
 	
+	sf::Color* redColour = new sf::Color(255, 0, 0);
 	sf::Font* font = new sf::Font();
 	font->loadFromFile("./data/ressources/fonts/Roboto-Regular.ttf");
 
@@ -262,9 +263,10 @@ int main() {
 		window.draw(*myHitPoints);
 
 		// Display ennemy hitpoints
-		std::string hitPointsBarTextEnnemy = "Ennemy HP : " + to_string(ennemy->hitPoints) + "/" + to_string(ennemy->baseHitPoints);
-		sf::Text* ennemyHitPoints = new sf::Text(hitPointsBarTextEnnemy, *font, 20);
-		ennemyHitPoints->setPosition(50.0f, 15.0f);
+		std::string hitPointsBarTextEnnemy = to_string(ennemy->hitPoints) + "/" + to_string(ennemy->baseHitPoints);
+		sf::Text* ennemyHitPoints = new sf::Text(hitPointsBarTextEnnemy, *font, 30);
+		ennemyHitPoints->setFillColor(*redColour);
+		ennemyHitPoints->setPosition(200.0f, 600.0f);
 		window.draw(*ennemyHitPoints);
 
 		window.display();
